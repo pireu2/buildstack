@@ -1,0 +1,890 @@
+{
+  "categories": [
+    {
+      "name": "Drywall & Ceiling Boards",
+      "slug": "drywall-systems",
+      "description": "High-performance gypsum, acoustic, fire-rated, and cementitious boards for partitions, ceilings, and wall linings.",
+      "icon": "Layers"
+    },
+    {
+      "name": "Insulation & Acoustics",
+      "slug": "insulation-acoustics",
+      "description": "Mineral wool, acoustic rock slabs, wood fiber, and thermal insulation rolls for acoustic isolation and energy efficiency.",
+      "icon": "Volume2"
+    },
+    {
+      "name": "Metal Framing & Profiles",
+      "slug": "metal-framing",
+      "description": "Galvanized steel CW studs, UW tracks, ceiling CD/UD channels, and resilient acoustic sound isolation profiles.",
+      "icon": "Grid"
+    },
+    {
+      "name": "Plasters & Joint Compounds",
+      "slug": "plasters-compounds",
+      "description": "High-strength joint fillers, ready-mixed finishing skims, acoustic mastics, and wall primers.",
+      "icon": "Brush"
+    },
+    {
+      "name": "Fasteners & Fixings",
+      "slug": "fasteners-accessories",
+      "description": "Self-drilling drywall screws, acoustic foam sealing tapes, resilient hanging brackets, and access panels.",
+      "icon": "Wrench"
+    },
+    {
+      "name": "Firestop & Safety Barriers",
+      "slug": "firestop-seals",
+      "description": "Intumescent pipe collars, fire dampers, ablative cavity barriers, and expanding smoke seals.",
+      "icon": "ShieldAlert"
+    },
+    {
+      "name": "Exterior Facades & Sheathing",
+      "slug": "facade-weatherproofing",
+      "description": "Weather-resistant exterior gypsum sheathing, rainscreen backing boards, and vapor-permeable membranes.",
+      "icon": "Building2"
+    },
+    {
+      "name": "Acoustic Flooring & Underlays",
+      "slug": "flooring-underlay",
+      "description": "Resilient impact sound decoupling mats, recycled rubber-cork composite layers, and acoustic screed edge strips.",
+      "icon": "SquareStack"
+    }
+  ],
+  "products": [
+    {
+      "sku": "NORD-DRY-STD-125",
+      "name": "NordicGips Standard Wallboard 12.5mm",
+      "slug": "nordicgips-standard-wallboard-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "NordicShield Gypsum AB",
+      "price": 6.85,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop",
+      "description": "Standard non-combustible gypsum wallboard with paper-faced ivory lining for residential and commercial partition walls.",
+      "data": {
+        "fire_classification": "A2-s1,d0",
+        "thickness_mm": 12.5,
+        "width_mm": 1250,
+        "length_mm": 2000,
+        "density_kg_m3": 680,
+        "weight_kg_m2": 8.5,
+        "edge_profile": "HRAK (Tapered Round Edge)",
+        "flexural_breaking_load_longitudinal_n": 550,
+        "flexural_breaking_load_transverse_n": 210,
+        "water_vapor_diffusion_mu": 10,
+        "standards": ["DIN 18180", "EN 520 (Type A)"],
+        "rag_chunk": "PRODUCT OVERVIEW: NordicGips Standard Wallboard 12.5mm (EN 520 Type A, DIN 18180) is an all-purpose gypsum building board designed for internal non-loadbearing drywall partitions, suspended ceilings, and wall lining furrings.\nTECHNICAL PERFORMANCE: Density is 680 kg/m³ with a unit weight of 8.5 kg/m². Features HRAK tapered round longitudinal edges for joint compound adhesion. Fire reaction rating is Euroclass A2-s1,d0.\nINSTALLATION CONSTRAINTS: Maximum permissible vertical stud spacing is 625mm for walls up to 3.0m height. Fasten using 25mm fine-thread drywall screws (TN 25) spaced at maximum 250mm intervals on walls and 170mm on ceilings. Requires standard Q1 to Q4 jointing compounds. Not suitable for wet rooms or continuous humidity above 70% RH."
+      }
+    },
+    {
+      "sku": "ACOU-SHIELD-PRO-125",
+      "name": "AcoustiBloc Studio Soundboard 12.5mm",
+      "slug": "acoustibloc-studio-soundboard-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 14.50,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop",
+      "description": "Ultra-dense modified gypsum core board formulated for critical sound attenuation in recording studios, home theaters, and luxury hotels.",
+      "data": {
+        "fire_classification": "A2-s1,d0",
+        "sound_reduction_index_rw_db": 58,
+        "thickness_mm": 12.5,
+        "density_kg_m3": 1040,
+        "weight_kg_m2": 13.0,
+        "edge_profile": "HRAK (Tapered Round Edge)",
+        "surface_hardness_brinell": "Class I (Heavy)",
+        "low_frequency_dampening_hz": "50 - 250 Hz",
+        "standards": ["EN 520 (Type D, I)", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: AcoustiBloc Studio Soundboard 12.5mm (EN 520 Type D, I) is a high-mass acoustic plasterboard formulated with a crystalline-modified gypsum core (1040 kg/m³) to dissipate sound waves through internal friction.\nTECHNICAL PERFORMANCE: Single board achieves weighted sound reduction index Rw of 58 dB in double-stud wall assemblies with 50mm stone wool cavity insulation. Surface hardness complies with Brinell Class I. Fire rating: A2-s1,d0.\nINSTALLATION CONSTRAINTS: Must be installed with staggered board joints between inner and outer layers. Maximum stud spacing is 600mm. Requires high-torque screws (e.g. ProFix TB or hardened TN screws) due to high core density. All perimeter interfaces must be sealed with non-hardening acoustic flanking mastic."
+      }
+    },
+    {
+      "sku": "PYRO-FIRE-EI90-150",
+      "name": "PyroSafe Structural Fireboard EI90 15mm",
+      "slug": "pyrosafe-structural-fireboard-ei90-15mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "PyroSafe Barrier Technologies",
+      "price": 16.20,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "Heavy mineral-reinforced fire protection board incorporating vermiculite and glass fiber roving to resist structural burn-through for 90 minutes.",
+      "data": {
+        "fire_resistance_rating": "EI 90 (EN 1364-1)",
+        "thickness_mm": 15.0,
+        "density_kg_m3": 890,
+        "weight_kg_m2": 13.35,
+        "core_additives": ["Exfoliated Vermiculite", "Continuous Glass Roving"],
+        "shrinkage_at_600c_percent": 1.2,
+        "max_temperature_celsius": 1050,
+        "standards": ["EN 520 (Type F)", "DIN 4102-4"],
+        "rag_chunk": "PRODUCT OVERVIEW: PyroSafe Structural Fireboard EI90 15mm (EN 520 Type F) contains bonded glass fiber roving and vermiculite mineral grains that release chemically bound water when exposed to high heat, maintaining partition integrity in building fires.\nTECHNICAL PERFORMANCE: Certified for EI 90 and EI 120 fire barriers according to EN 1364-1 and DIN 4102-4. Core density: 890 kg/m³, unit weight: 13.35 kg/m². Thermal shrinkage at 600°C is under 1.2%.\nINSTALLATION CONSTRAINTS: Recommended for emergency egress stairwells, elevator shaft enclosures, and plant rooms. Joints must be backed by steel studs or horizontal nogging straps and sealed with intumescent firestop compound. Screw spacing must not exceed 200mm."
+      }
+    },
+    {
+      "sku": "HYDR-BLOC-H1-125",
+      "name": "HydroBloc WetRoom Board H1 12.5mm",
+      "slug": "hydrobloc-wetroom-board-h1-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "HydroBloc Waterproofing Systems S.p.A.",
+      "price": 12.40,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop",
+      "description": "Hydrophobic silicone-treated gypsum board with fungicides to inhibit mold and mildew growth in high-humidity commercial bathrooms.",
+      "data": {
+        "water_absorption_class": "EN 520 Type H1 (<5% total water absorption)",
+        "surface_water_absorption_g_m2": 120,
+        "fungicide_biocide_treated": true,
+        "thickness_mm": 12.5,
+        "density_kg_m3": 740,
+        "weight_kg_m2": 9.25,
+        "tile_loading_capacity_kg_m2": 32,
+        "color_indicator": "Emerald Green Paper Liner",
+        "standards": ["EN 520 (Type H1)", "DIN 18180"],
+        "rag_chunk": "PRODUCT OVERVIEW: HydroBloc WetRoom Board H1 12.5mm is a moisture-resistant gypsum wallboard with a hydrophobized core formulated with silicone oil additives to restrict water absorption below 5% by weight (Class H1).\nTECHNICAL PERFORMANCE: Surface water absorption is less than 120 g/m² after 2 hours immersion. Supports direct ceramic tile adhesion up to 32 kg/m² when primed. Treated with fungistatic agents to eliminate fungal sporulation.\nINSTALLATION CONSTRAINTS: Must be fastened using corrosion-resistant phosphated or coated screws (Class C5 or coated TN). Use green hydrophobic joint compound for seams. In direct water spray splash zones (showers), a liquid tanking waterproofing membrane must be applied prior to tiling."
+      }
+    },
+    {
+      "sku": "KNAU-DIAM-125",
+      "name": "Knauf Diamant Multi-Performance Board 12.5mm",
+      "slug": "knauf-diamant-multi-performance-board-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "Knauf Gips KG",
+      "price": 19.80,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?q=80&w=800&auto=format&fit=crop",
+      "description": "Engineered premium gypsum board combining acoustic dampening, fire resistance, moisture protection, and extreme surface hardness.",
+      "data": {
+        "multi_classification": "EN 520 Type DFH2IR",
+        "fire_resistance": "EI 90",
+        "sound_reduction_rw_db": 62,
+        "impact_resistance_brinell_n_mm2": 38,
+        "thickness_mm": 12.5,
+        "density_kg_m3": 1050,
+        "weight_kg_m2": 13.1,
+        "cantilever_load_capacity_per_plug_kg": 65,
+        "standards": ["EN 520 (Type DFH2IR)", "DIN 18180", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: Knauf Diamant 12.5mm is a multi-performance board certified under EN 520 Type DFH2IR, delivering sound isolation (D), fire safety (F), moisture protection (H2), high impact resistance (I), and increased flexural strength (R).\nTECHNICAL PERFORMANCE: Density: 1050 kg/m³. Surface Brinell hardness: 38 N/mm². Provides up to 65 kg single-point cantilever load capacity using hollow wall metal anchors. Achieves up to Rw 62 dB acoustic rating in dual-stud partitions.\nINSTALLATION CONSTRAINTS: Requires specialized hardened Knauf Diamantschraube screws for installation due to high board density. Compatible with Knauf W112 and W115 partition systems. Recommended for hospital corridors, schools, and heavy commercial applications."
+      }
+    },
+    {
+      "sku": "CEME-AQUA-EXT-125",
+      "name": "CemArmor Inorganic Portland Cement Board 12.5mm",
+      "slug": "cemarmor-portland-cement-board-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "CemArmor Construction Elements",
+      "price": 28.50,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=800&auto=format&fit=crop",
+      "description": "100% moisture-impervious Portland cement core board reinforced with alkali-resistant glass mesh for indoor swimming pools and exterior soffits.",
+      "data": {
+        "core_composition": "Hydraulic Portland Cement with Perlite Aggregate",
+        "reinforcement": "Alkali-Resistant Glass Fiber Mesh (Double Sided)",
+        "fire_classification": "A1 Non-combustible (EN 13501-1)",
+        "freeze_thaw_cycles_resistance": 300,
+        "max_heavy_tile_load_kg_m2": 55,
+        "swelling_after_24h_immersion_percent": 0.0,
+        "standards": ["EN 12467 Category B", "ETA-07/0173"],
+        "rag_chunk": "PRODUCT OVERVIEW: CemArmor Portland Cement Board 12.5mm is an inorganic, cementitious substrate engineered for continuous wet and high-stress environments such as commercial swimming pools, steam saunas, and exterior eaves.\nTECHNICAL PERFORMANCE: Core is hydraulic Portland cement wrapped in alkali-resistant glass fiber mesh. Zero swelling or structural degradation under water immersion. Rated Euroclass A1 non-combustible. Maximum tile load capacity is 55 kg/m².\nINSTALLATION CONSTRAINTS: Must be mounted on corrosion-protected steel framing (min. Z275 zinc coating or C3/C5 corrosion class). Fasten with stainless steel or ceramic-coated cement board screws. Jointing requires alkali-resistant fiberglass tape embedded in cementitious adhesive mortar."
+      }
+    },
+    {
+      "sku": "FLEX-CURVE-065",
+      "name": "CurvForm Flexible Gypsum Board 6.5mm",
+      "slug": "curvform-flexible-gypsum-board-6-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "NordicShield Gypsum AB",
+      "price": 13.40,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop",
+      "description": "Ultra-thin fiberglass reinforced gypsum board engineered for tight architectural radiuses, barrel-vault ceilings, and curved wall designs.",
+      "data": {
+        "thickness_mm": 6.5,
+        "dry_bending_radius_mm": 1000,
+        "wet_bending_radius_mm": 300,
+        "weight_kg_m2": 4.6,
+        "fiberglass_mat_reinforcement": true,
+        "tensile_elastic_modulus_gpa": 2.8,
+        "standards": ["EN 520", "DIN 18180"],
+        "rag_chunk": "PRODUCT OVERVIEW: CurvForm Flexible Gypsum Board 6.5mm is an architectural board designed for creating curved walls, serpentine partitions, column casings, and arched barrel-vault ceilings.\nTECHNICAL PERFORMANCE: Bends dry down to a 1000mm radius without pre-wetting. When moistened with a spiked roller and water spray, it achieves tight curves down to a 300mm radius. Weight: 4.6 kg/m².\nINSTALLATION CONSTRAINTS: Substructure stud spacing must be reduced to 300mm or 150mm on curved framing sections. Double-layer installation (2 x 6.5mm) is recommended to achieve structural stiffness comparable to standard 12.5mm partitions."
+      }
+    },
+    {
+      "sku": "ACOU-CLEAN-PERF",
+      "name": "AeroClean Perforated Acoustic Tile with Zeolite",
+      "slug": "aeroclean-perforated-acoustic-tile-zeolite",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 32.00,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?q=80&w=800&auto=format&fit=crop",
+      "description": "Continuous acoustic perforated ceiling board backed with acoustic fleece and embedded with active zeolite minerals that decompose airborne VOCs.",
+      "data": {
+        "sound_absorption_coefficient_alpha_w": 0.85,
+        "sound_absorption_class": "Class B (EN ISO 11654)",
+        "perforation_pattern": "8/18R Continuous Round Holes",
+        "open_area_percentage": 15.5,
+        "air_purification_active_agent": "Natural Clinoptilolite Zeolite",
+        "voc_reduction_rate_24h_percent": 82,
+        "rear_backing": "Acoustic Non-Woven Fleece Membrane",
+        "standards": ["EN 14190", "DIN EN ISO 354"],
+        "rag_chunk": "PRODUCT OVERVIEW: AeroClean Perforated Acoustic Ceiling Tile (EN 14190) combines room acoustic reverberation control with indoor air catalytic purification for open-plan offices, schools, and reception lobbies.\nTECHNICAL PERFORMANCE: Achieves weighted sound absorption coefficient alpha_w of 0.85 (Class B). Gypsum matrix is enriched with natural zeolite crystals that permanently decompose airborne volatile organic compounds (VOCs).\nINSTALLATION CONSTRAINTS: Must be installed with specialized alignment guides to keep perforation patterns continuous across joints. Fasten to CD 60/27 ceiling channels spaced at 333mm. Use jointing compound with precision foil cartridge applicator to prevent clogging perforations."
+      }
+    },
+    {
+      "sku": "SILENT-ULTRA-BASS",
+      "name": "SilentCore Sub-Frequency Acoustic Slab 12.5mm",
+      "slug": "silentcore-sub-frequency-acoustic-slab-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 26.50,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=800&auto=format&fit=crop",
+      "description": "High-mass mineral core board optimized for structural decoupling of low-frequency subwoofer vibrations below 200 Hz.",
+      "data": {
+        "mass_surface_weight_kg_m2": 17.5,
+        "core_density_kg_m3": 1400,
+        "low_frequency_transmission_loss_100hz_db": 34,
+        "composite_core": "Heavy Barium-Gypsum Matrix with Viscoelastic Interlayer",
+        "thickness_mm": 12.5,
+        "fire_classification": "EI 60",
+        "standards": ["DIN 4109-1", "EN 520 (Type DF)"],
+        "rag_chunk": "PRODUCT OVERVIEW: SilentCore Sub-Frequency Acoustic Slab 12.5mm is an ultra-dense board (1400 kg/m³) designed specifically to overcome resonance dips in low-frequency ranges (50 Hz to 200 Hz) where standard drywall fails.\nTECHNICAL PERFORMANCE: Unit mass is 17.5 kg/m². Delivers total wall sound reduction index up to Rw 67–71 dB when applied as outer skin in multi-layer staggered drywall assemblies with resilient acoustic channels.\nINSTALLATION CONSTRAINTS: Requires heavy-duty structural stud framing (minimum 0.6mm steel gauge) to support board deadweight. Use hardened self-drilling screws spaced at 200mm. Never screw directly into floor without resilient acoustic perimeter tape."
+      }
+    },
+    {
+      "sku": "MASS-SINGLE-200",
+      "name": "StrukturMass Single-Layer High Load Board 20mm",
+      "slug": "strukturmass-single-layer-high-load-board-20mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "NordicShield Gypsum AB",
+      "price": 22.00,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?q=80&w=800&auto=format&fit=crop",
+      "description": "20mm extra-thick board designed for single-layer installation with certified EI 60 fire rating and heavy mechanical fixing loads.",
+      "data": {
+        "thickness_mm": 20.0,
+        "single_layer_fire_rating": "EI 60",
+        "single_layer_acoustic_rw_db": 49,
+        "weight_kg_m2": 18.0,
+        "board_width_mm": 625,
+        "screw_spacing_max_mm": 250,
+        "standards": ["EN 520 (Type DF)", "DIN 18180"],
+        "rag_chunk": "PRODUCT OVERVIEW: StrukturMass 20mm is an extra-thick single-layer drywall panel engineered to replace multi-layer double-board assemblies in commercial partitions.\nTECHNICAL PERFORMANCE: Delivers certified EI 60 fire rating and 49 dB acoustic attenuation with only 1 layer per side. Reduces installation labor hours by 40% compared to dual 12.5mm boards.\nINSTALLATION CONSTRAINTS: Board width is standardized at 625mm for ergonomic manual handling on construction sites. Fasten using 35mm drywall screws (TN 35)."
+      }
+    },
+    {
+      "sku": "MED-RAD-SAFE-125",
+      "name": "MedShield Barium Lead-Free X-Ray Board 12.5mm",
+      "slug": "medshield-barium-x-ray-board-12-5mm",
+      "categorySlug": "drywall-systems",
+      "manufacturer": "PyroSafe Barrier Technologies",
+      "price": 64.00,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop",
+      "description": "Barium sulfate enriched radiation protection board providing 100% lead-free X-ray shielding for dental clinics and diagnostic radiology rooms.",
+      "data": {
+        "lead_equivalent_value_mm_pb": "1.0 mm Pb at 100 kV",
+        "core_composition": "Barium Sulfate Gypsum Heavy Matrix (65% BaSO4)",
+        "density_kg_m3": 1600,
+        "weight_kg_m2": 20.0,
+        "thickness_mm": 12.5,
+        "fire_classification": "EI 90 (EN 1364-1)",
+        "standards": ["DIN 6812", "EN 520 (Type DF)"],
+        "rag_chunk": "PRODUCT OVERVIEW: MedShield Barium X-Ray Board 12.5mm is a non-toxic, lead-free radiation barrier plasterboard engineered for hospital diagnostic suites, veterinary clinics, and dental radiography suites.\nTECHNICAL PERFORMANCE: Density: 1600 kg/m³. A single layer provides 1.0mm Pb lead-equivalent shielding for X-ray tube voltages up to 100 kV according to DIN 6812. Eliminates toxic lead sheeting disposal hazards.\nINSTALLATION CONSTRAINTS: All board joints must be backed by lead-free radiation sealing compound (MedShield Joint Paste) to prevent radiation leak pathways. Fasteners must be covered with radiation protection caps."
+      }
+    },
+
+    {
+      "sku": "VULK-ROCK-SLAB-035-50",
+      "name": "VulkanRock Acoustic Stone Wool Cavity Slab 50mm",
+      "slug": "vulkanrock-acoustic-stone-wool-cavity-slab-50mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "Vulkan Mineral Isolations GmbH",
+      "price": 5.95,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "Non-combustible stone wool slab engineered with an optimum airflow resistivity of 10 kPa·s/m² for drywall sound dampening.",
+      "data": {
+        "airflow_resistivity_kpa_s_m2": 10,
+        "thermal_conductivity_lambda_w_mk": 0.035,
+        "fire_behavior": "Euroclass A1 Non-combustible",
+        "melting_point_celsius": 1050,
+        "bulk_density_kg_m3": 32,
+        "water_vapor_diffusion_mu": 1,
+        "dimensions_mm": "1000 x 625 x 50",
+        "standards": ["EN 13162", "DIN 4102-17", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: VulkanRock Acoustic Stone Wool Slab 50mm (Lambda 0.035 W/mK) is an inorganic stone wool batt engineered for sound absorption and fire compartmentation in drywall cavities.\nTECHNICAL PERFORMANCE: Airflow resistivity is certified at 10 kPa·s/m² according to EN 29053, which is the exact acoustic optimum to prevent resonant standing waves in hollow studs without causing flanking transmission. Euroclass A1 non-combustible (melting point >1050°C).\nINSTALLATION CONSTRAINTS: Friction-fits between vertical CW studs (625mm centers) without mechanical fasteners or slump over time. Maintain minimum 80% cavity fill depth for optimal acoustic rating."
+      }
+    },
+    {
+      "sku": "VULK-ROCK-SLAB-035-75",
+      "name": "VulkanRock Acoustic Stone Wool Cavity Slab 75mm",
+      "slug": "vulkanrock-acoustic-stone-wool-cavity-slab-75mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "Vulkan Mineral Isolations GmbH",
+      "price": 8.40,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "75mm stone wool batts sized for friction-fit installation within CW 75 metal partition framing.",
+      "data": {
+        "airflow_resistivity_kpa_s_m2": 12,
+        "thermal_conductivity_lambda_w_mk": 0.035,
+        "fire_behavior": "Euroclass A1 Non-combustible",
+        "bulk_density_kg_m3": 35,
+        "thermal_resistance_r_value_m2_k_w": 2.14,
+        "dimensions_mm": "1000 x 625 x 75",
+        "standards": ["EN 13162", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: VulkanRock 75mm Stone Wool Batt provides enhanced thermal and acoustic performance for 100mm–125mm total partition assemblies built on CW 75 metal substructures.\nTECHNICAL PERFORMANCE: Thermal resistance R-value is 2.14 m²K/W. Airflow resistivity: 12 kPa·s/m². Certified non-combustible A1.\nINSTALLATION CONSTRAINTS: Install with snug edge contact to avoid thermal bridging gaps. Cut with a wavy-edge insulation knife."
+      }
+    },
+    {
+      "sku": "VULK-ROCK-SLAB-035-100",
+      "name": "VulkanRock Heavy Density Acoustic Batt 100mm",
+      "slug": "vulkanrock-heavy-density-acoustic-batt-100mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "Vulkan Mineral Isolations GmbH",
+      "price": 11.20,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "High-density 100mm stone wool batt for CW 100 partitions requiring maximum thermal barrier and low-frequency airborne sound isolation.",
+      "data": {
+        "airflow_resistivity_kpa_s_m2": 15,
+        "thermal_conductivity_lambda_w_mk": 0.035,
+        "fire_behavior": "Euroclass A1 Non-combustible",
+        "bulk_density_kg_m3": 40,
+        "thermal_resistance_r_value_m2_k_w": 2.85,
+        "dimensions_mm": "1000 x 625 x 100",
+        "standards": ["EN 13162", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: VulkanRock Heavy 100mm is a high-density acoustic stone wool slab (40 kg/m³) engineered for inter-tenancy party walls and high acoustic isolation partitions.\nTECHNICAL PERFORMANCE: Thermal resistance: R = 2.85 m²K/W. Airflow resistivity: 15 kPa·s/m². Provides structural fire insulation integrity up to EI 120 in double-stud drywall assemblies.\nINSTALLATION CONSTRAINTS: Fits inside CW 100 metal profiles or staggered double-stud drywall cavities. Ensure no compression occurs during board installation."
+      }
+    },
+    {
+      "sku": "ALPI-WOOD-ECO-038",
+      "name": "AlpineBio Carbon-Negative Wood Fiber Batts 60mm",
+      "slug": "alpinebio-carbon-negative-wood-fiber-batts-60mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "Alpine WoodFiber Systems AG",
+      "price": 9.80,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop",
+      "description": "Natural wood-fiber insulation batts made from sustainable sawmill residues, offering thermal phase shift to buffer summer heat.",
+      "data": {
+        "carbon_storage_gwp_kg_co2_kg": -1.25,
+        "specific_heat_capacity_c_j_kg_k": 2100,
+        "thermal_conductivity_lambda_w_mk": 0.038,
+        "density_kg_m3": 50,
+        "vapor_permeability_mu": 2,
+        "raw_material": "100% PEFC Certified Coniferous Softwood",
+        "standards": ["EN 13171", "Natureplus Certified"],
+        "rag_chunk": "PRODUCT OVERVIEW: AlpineBio Wood Fiber Batts 60mm (EN 13171) are natural, carbon-negative ecological insulation panels manufactured from certified softwood residues with zero petrochemical binders.\nTECHNICAL PERFORMANCE: Thermal conductivity: 0.038 W/mK. Specific heat capacity is 2100 J/kg·K (over double that of mineral wool), delivering high thermal phase shift to protect interiors against summer heatwaves. Absorbs and releases moisture without loss of thermal insulation power.\nINSTALLATION CONSTRAINTS: Friction-fit into timber studs or CW steel profiles. Avoid direct contact with liquid water; requires vapor-permeable membrane on the warm interior side."
+      }
+    },
+    {
+      "sku": "ISOT-PIR-ALU-022",
+      "name": "IsoTherm Rigid Foil-Faced PIR Board 50mm",
+      "slug": "isotherm-rigid-foil-faced-pir-board-50mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "IsoThermal Engineering S.A.",
+      "price": 15.50,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=800&auto=format&fit=crop",
+      "description": "Ultra-efficient rigid polyisocyanurate (PIR) core board with gas-tight multi-layer aluminium facings for tight envelope insulation.",
+      "data": {
+        "thermal_conductivity_lambda_w_mk": 0.022,
+        "compressive_strength_at_10_percent_kpa": 150,
+        "facing_type": "50 Micron Pure Aluminium Foil Tri-Laminate",
+        "thermal_resistance_r_value_m2_k_w": 2.27,
+        "closed_cell_content_percent": 95,
+        "fire_reaction": "Class B-s1,d0",
+        "standards": ["EN 13165"],
+        "rag_chunk": "PRODUCT OVERVIEW: IsoTherm Rigid PIR Board 50mm (EN 13165) provides ultra-low thermal conductivity (Lambda 0.022 W/mK), allowing minimum wall thickness while satisfying strict passive house building energy codes.\nTECHNICAL PERFORMANCE: Thermal resistance: R = 2.27 m²K/W. Compressive strength at 10% deformation is 150 kPa. Aluminum foil facing serves as an integrated 100% vapor barrier (sd > 1500m).\nINSTALLATION CONSTRAINTS: Board joints must be taped with pure aluminum sealing tape to maintain continuous vapor barrier integrity. Not flexible; requires flat structural masonry or framing substrates."
+      }
+    },
+    {
+      "sku": "ECO-SHEEP-036-50",
+      "name": "EcoFiber Pure Sheep Wool Thermal Roll 50mm",
+      "slug": "ecofiber-pure-sheep-wool-thermal-roll-50mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "EcoFiber Bio-Materials A/S",
+      "price": 18.20,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=800&auto=format&fit=crop",
+      "description": "100% natural washed sheep wool insulation roll with natural keratin fibers that absorb and neutralize airborne formaldehyde.",
+      "data": {
+        "thermal_conductivity_lambda_w_mk": 0.036,
+        "sound_absorption_coefficient_alpha_w": 0.80,
+        "keratin_air_filtering_efficiency": "95% Formaldehyde Breakdown in 24h",
+        "fire_behavior": "Naturally self-extinguishing (DIN 4102-B2)",
+        "density_kg_m3": 22,
+        "standards": ["EN 13172", "Natureplus"],
+        "rag_chunk": "PRODUCT OVERVIEW: EcoFiber Sheep Wool 50mm is a breathable, organic thermal insulation material that uses the natural chemistry of wool protein (keratin) to permanently bind and neutralize indoor chemical toxins.\nTECHNICAL PERFORMANCE: Thermal conductivity: 0.036 W/mK. Can absorb up to 33% of its own weight in moisture without feeling damp or losing insulation value. Naturally flame-retardant (limiting oxygen index LOI 25%).\nINSTALLATION CONSTRAINTS: Completely non-irritant to skin and respiratory tract; requires no PPE, gloves, or dust masks during cutting and installation."
+      }
+    },
+    {
+      "sku": "AERO-NANO-BLANKET-10",
+      "name": "NanoShield Aerogel Ultra-Thin Blanket 10mm",
+      "slug": "nanoshield-aerogel-ultra-thin-blanket-10mm",
+      "categorySlug": "insulation-acoustics",
+      "manufacturer": "IsoThermal Engineering S.A.",
+      "price": 55.00,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=800&auto=format&fit=crop",
+      "description": "Nanoporous silica aerogel insulation blanket with the world's lowest thermal conductivity (0.015 W/mK) for eliminating cold thermal bridges.",
+      "data": {
+        "thermal_conductivity_lambda_w_mk": 0.015,
+        "thickness_mm": 10,
+        "temperature_resistance_range_celsius": "-200 to +650",
+        "hydrophobic": "100% Water Repellent",
+        "vapor_permeable": true,
+        "fire_reaction": "Class A2-s1,d0",
+        "standards": ["EN 13162", "ASTM C1728"],
+        "rag_chunk": "PRODUCT OVERVIEW: NanoShield Aerogel Blanket 10mm utilizes silica aerogel nanopores to achieve a thermal conductivity of 0.015 W/mK, delivering the thermal performance of 40mm conventional mineral wool in a 10mm space.\nTECHNICAL PERFORMANCE: Eliminates thermal bridges around window reveals, balcony connections, and tight interior retrofits. Completely water-repellent (hydrophobic) yet vapor-permeable.\nINSTALLATION CONSTRAINTS: Cut using industrial shears or utility blades. Fasten with mechanical plastic washer anchors or specialized polyurethane contact adhesives."
+      }
+    },
+
+    {
+      "sku": "STAH-CW50-06-3000",
+      "name": "StahlProfil CW 50 Partition Stud (3.0m)",
+      "slug": "stahlprofil-cw-50-partition-stud-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "StahlProfil Metal Framing GmbH",
+      "price": 7.40,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "Galvanized cold-rolled C-stud with embossed knurled flanges to prevent screw slip during high-speed drywall installation.",
+      "data": {
+        "web_width_mm": 50,
+        "flange_width_mm": 50,
+        "steel_thickness_mm": 0.6,
+        "steel_grade": "DX51D+Z (Hot-Dip Galvanized)",
+        "zinc_coating_mass_g_m2": 140,
+        "moment_of_inertia_iy_cm4": 4.12,
+        "yield_strength_mpa": 240,
+        "cable_service_punchouts": "H-Punch every 500mm",
+        "standards": ["DIN 18182-1", "EN 14195"],
+        "rag_chunk": "PRODUCT OVERVIEW: StahlProfil CW 50 (3.0m, 0.6mm steel gauge) is the primary vertical structural framing element for slim drywall partitions with total wall thickness of 75mm or 100mm.\nTECHNICAL PERFORMANCE: Cold-rolled from DX51D galvanized steel with 140 g/m² zinc coating. Flanges are embossed with diamond knurling to stop self-drilling screws from slipping during rapid mechanical fastening. Features H-shaped knockouts for electrical wires.\nINSTALLATION CONSTRAINTS: Slide vertically into UW 50 floor/ceiling tracks with 15mm clearance at the top to allow floor slab deflections. Standard vertical spacing: 625mm (or 417mm for heavy tile loads)."
+      }
+    },
+    {
+      "sku": "STAH-CW75-06-3000",
+      "name": "StahlProfil CW 75 Commercial Stud (3.0m)",
+      "slug": "stahlprofil-cw-75-commercial-stud-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "StahlProfil Metal Framing GmbH",
+      "price": 8.90,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "75mm wide vertical stud for high partition walls up to 4.5m with generous internal conduit capacity.",
+      "data": {
+        "web_width_mm": 75,
+        "flange_width_mm": 50,
+        "steel_thickness_mm": 0.6,
+        "moment_of_inertia_iy_cm4": 7.45,
+        "max_unbraced_wall_height_m": 4.5,
+        "zinc_coating_mass_g_m2": 140,
+        "standards": ["DIN 18182-1", "EN 14195"],
+        "rag_chunk": "PRODUCT OVERVIEW: StahlProfil CW 75 vertical stud is designed for commercial office partitions requiring wall heights up to 4.5 meters without structural reinforcement.\nTECHNICAL PERFORMANCE: Moment of inertia: Iy = 7.45 cm⁴. Accommodates 75mm acoustic stone wool batts for enhanced acoustic ratings (Rw up to 58 dB in double-board setups).\nINSTALLATION CONSTRAINTS: Insert into UW 75 perimeter tracks. Fix boards on both sides using staggered joint layouts."
+      }
+    },
+    {
+      "sku": "STAH-CW100-06-3000",
+      "name": "StahlProfil CW 100 Heavy-Duty Vertical Stud (3.0m)",
+      "slug": "stahlprofil-cw-100-heavy-duty-vertical-stud-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "StahlProfil Metal Framing GmbH",
+      "price": 10.80,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "100mm wide structural vertical stud for high partition walls up to 6.5m and maximum acoustic cavity separation.",
+      "data": {
+        "web_width_mm": 100,
+        "flange_width_mm": 50,
+        "steel_thickness_mm": 0.6,
+        "moment_of_inertia_iy_cm4": 12.2,
+        "max_unbraced_wall_height_m": 6.5,
+        "standards": ["DIN 18182-1", "EN 14195"],
+        "rag_chunk": "PRODUCT OVERVIEW: StahlProfil CW 100 is an extra-wide structural stud for industrial partitions, cinemas, and auditoriums reaching ceiling heights up to 6.5 meters.\nTECHNICAL PERFORMANCE: Provides a 100mm internal acoustic cavity to hold thick 100mm stone wool slabs. Moment of inertia: Iy = 12.2 cm⁴.\nINSTALLATION CONSTRAINTS: Pairs with UW 100 floor and ceiling perimeter tracks. Stagger board joints."
+      }
+    },
+    {
+      "sku": "STAH-UW50-06-3000",
+      "name": "StahlProfil UW 50 Floor & Ceiling Track (3.0m)",
+      "slug": "stahlprofil-uw-50-floor-ceiling-track-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "StahlProfil Metal Framing GmbH",
+      "price": 6.90,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "U-shaped perimeter track for anchoring CW 50 studs securely to floor and ceiling concrete slabs.",
+      "data": {
+        "web_width_mm": 50,
+        "flange_width_mm": 40,
+        "steel_thickness_mm": 0.6,
+        "length_mm": 3000,
+        "standards": ["DIN 18182-1", "EN 14195"],
+        "rag_chunk": "PRODUCT OVERVIEW: StahlProfil UW 50 is the horizontal base and head guide track for CW 50 vertical studs in standard 75mm/100mm drywall partitions.\nINSTALLATION CONSTRAINTS: Must be fastened to structural floors and ceilings using hammer-set metal anchors at max 800mm centers. Apply self-adhesive acoustic foam sealing tape to the back of the track before fastening to prevent flanking noise."
+      }
+    },
+    {
+      "sku": "STAH-UW75-06-3000",
+      "name": "StahlProfil UW 75 Floor & Ceiling Track (3.0m)",
+      "slug": "stahlprofil-uw-75-floor-ceiling-track-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "StahlProfil Metal Framing GmbH",
+      "price": 8.20,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "75mm U-track for floor and ceiling perimeter anchoring of CW 75 partition walls.",
+      "data": {
+        "web_width_mm": 75,
+        "flange_width_mm": 40,
+        "steel_thickness_mm": 0.6,
+        "length_mm": 3000,
+        "standards": ["DIN 18182-1", "EN 14195"],
+        "rag_chunk": "PRODUCT OVERVIEW: StahlProfil UW 75 is the perimeter anchoring track for CW 75 partitions, creating the top and bottom structural connection.\nINSTALLATION CONSTRAINTS: Fix at 800mm intervals using approved fasteners. Apply 75mm acoustic foam tape beneath track."
+      }
+    },
+    {
+      "sku": "STAH-UA75-20-3000",
+      "name": "StahlProfil Heavy Structural UA 75 Doorframe (2.0mm)",
+      "slug": "stahlprofil-heavy-ua-75-doorframe-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "StahlProfil Metal Framing GmbH",
+      "price": 23.50,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "2.0mm heavy-gauge structural profile for framing commercial door portals and carrying heavy fire doors up to 100kg.",
+      "data": {
+        "steel_thickness_mm": 2.0,
+        "web_width_mm": 75,
+        "flange_width_mm": 40,
+        "max_door_leaf_weight_kg": 100,
+        "yield_strength_mpa": 320,
+        "moment_of_inertia_iy_cm4": 28.5,
+        "slotted_connection_holes_mm": "9 x 40 oval slots",
+        "standards": ["DIN 18182-1", "EN 14195"],
+        "rag_chunk": "PRODUCT OVERVIEW: StahlProfil UA 75 (2.0mm heavy gauge) is a heavy structural jamb stud engineered for door openings, sanitary wall fixtures, and free-standing partition ends.\nTECHNICAL PERFORMANCE: Supports door leaf weights up to 100 kg. Moment of inertia: 28.5 cm⁴. Yield strength: 320 MPa.\nINSTALLATION CONSTRAINTS: Must be connected to structural slabs at top and bottom using heavy-duty UA connecting angle brackets with M8 bolts. Do not use standard drywall screws on UA studs; use self-drilling TB screws."
+      }
+    },
+    {
+      "sku": "ACOU-SPRING-CH-3000",
+      "name": "DecoupleSpring Resilient Sound Channel (3.0m)",
+      "slug": "decouplespring-resilient-sound-channel-3-0m",
+      "categorySlug": "metal-framing",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 11.50,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "Flexible single-leg resilient sound isolation channel that mechanically decouples plasterboards from structural studs.",
+      "data": {
+        "profile_geometry": "Single-Leg Slotted Spring Web",
+        "acoustic_transmission_gain_db": 7,
+        "steel_thickness_mm": 0.55,
+        "channel_depth_mm": 13,
+        "perforated_screw_leg_width_mm": 35,
+        "standards": ["EN 14195", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: DecoupleSpring Resilient Channel (RC1 Profile) is a spring-steel decoupling rail mounted horizontally across metal or timber studs to isolate sound transmission.\nTECHNICAL PERFORMANCE: Increases weighted sound reduction index Rw by +5 to +8 dB by breaking the rigid mechanical bridge between wall studs and drywall facing.\nINSTALLATION CONSTRAINTS: Mount horizontally at 400mm or 600mm centers with the mounting flange pointing downward. Drywall screws must penetrate the channel face only and NEVER touch the underlying studs (which would short-circuit acoustic decoupling)."
+      }
+    },
+
+    {
+      "sku": "PLAS-UNIFILL-PRO-25",
+      "name": "PlasterMaster Unifill High-Adhesion Joint Compound (25kg)",
+      "slug": "plastermaster-unifill-joint-compound-25kg",
+      "categorySlug": "plasters-compounds",
+      "manufacturer": "PlasterMaster Chemical Compounds B.V.",
+      "price": 38.50,
+      "unit": "bag (25kg)",
+      "imageUrl": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop",
+      "description": "Alpha-hemihydrate gypsum joint filler enriched with organic adhesion polymers, enabling crack-free jointing without joint tape.",
+      "data": {
+        "chemical_base": "High-Purity Alpha-Hemihydrate Gypsum with Methylcellulose",
+        "water_mixing_ratio_l_kg": 0.52,
+        "pot_life_working_time_minutes": 45,
+        "initial_setting_time_minutes": 60,
+        "flexural_tensile_strength_n_mm2": 3.2,
+        "compressive_strength_n_mm2": 8.5,
+        "ph_value": 7.5,
+        "finishing_levels": ["Q1 Base Joint", "Q2 Standard Joint"],
+        "standards": ["EN 13963 (Type 4B)", "DIN 1168"],
+        "rag_chunk": "PRODUCT OVERVIEW: PlasterMaster Unifill 25kg (EN 13963 Type 4B) is a high-strength polymer-modified alpha-gypsum joint filler designed for filling board seams and covering screw heads.\nTECHNICAL PERFORMANCE: Compressive strength: 8.5 N/mm². Provides high adhesion on rounded tapered HRAK board edges without requiring joint reinforcement tape. Working pot life: 45 minutes.\nINSTALLATION CONSTRAINTS: Mix with clean cold water (approx. 5 liters per 10kg powder). Do not re-temper set compound with additional water."
+      }
+    },
+    {
+      "sku": "PLAS-SKIM-Q4-20",
+      "name": "PlasterMaster VelvetSkim Ready-To-Use Paste (20kg)",
+      "slug": "plastermaster-velvetskim-ready-paste-20kg",
+      "categorySlug": "plasters-compounds",
+      "manufacturer": "PlasterMaster Chemical Compounds B.V.",
+      "price": 29.90,
+      "unit": "bucket (20kg)",
+      "imageUrl": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop",
+      "description": "Pre-mixed vinyl-copolymer finishing skim paste for rolling or spraying onto drywall to achieve Q4 glass-smooth surfaces.",
+      "data": {
+        "max_grain_size_microns": 35,
+        "density_g_cm3": 1.65,
+        "application_methods": ["Roller Application", "Airless Spray", "Hand Trowel"],
+        "coverage_kg_m2_per_mm": 1.4,
+        "drying_time_at_20c_hours": 12,
+        "voc_content_g_l": 0.8,
+        "surface_finish_class": "Q3 - Q4 High-End Luxury",
+        "standards": ["EN 13963 (Type 3A)"],
+        "rag_chunk": "PRODUCT OVERVIEW: VelvetSkim 20kg is a ready-to-use air-drying finishing skim formulated with fine calcium carbonate and vinyl binder to produce Q4 glass-smooth wall surfaces.\nTECHNICAL PERFORMANCE: Maximum grain size is under 35 microns. Sands effortlessly without clumping or dusting. Zero VOC emissions (<0.8 g/L).\nINSTALLATION CONSTRAINTS: Apply in thin coats up to 2mm thickness. Substrate must be fully primed and cured prior to skimming."
+      }
+    },
+    {
+      "sku": "ACOU-SEAL-FLANK-310",
+      "name": "AcoustiMastic Non-Hardening Flanking Caulk (310ml)",
+      "slug": "acoustimastic-non-hardening-flanking-caulk-310ml",
+      "categorySlug": "plasters-compounds",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 6.80,
+      "unit": "cartridge",
+      "imageUrl": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop",
+      "description": "Permanently plastic synthetic polymer caulk engineered to seal perimeter drywall joints without drying out or cracking.",
+      "data": {
+        "elastic_recovery_percent": 98,
+        "permanent_flexibility_years": 30,
+        "acoustic_flanking_reduction_db": 60,
+        "specific_gravity": 1.55,
+        "skin_over_time_minutes": 15,
+        "temperature_resistance_range": "-30°C to +80°C",
+        "standards": ["DIN 4109", "EN ISO 11600"],
+        "rag_chunk": "PRODUCT OVERVIEW: AcoustiMastic 310ml is a permanently plastic acoustic sealant engineered to seal perimeter gaps between drywall framing and surrounding masonry or concrete.\nTECHNICAL PERFORMANCE: Retains 98% elasticity for over 30 years without shrinkage or embrittlement, stopping airborne acoustic leaks.\nINSTALLATION CONSTRAINTS: Apply a continuous 6mm–10mm bead along all perimeter edges before installing baseboards."
+      }
+    },
+
+    {
+      "sku": "PROF-SCRW-TN25-1000",
+      "name": "ProFix Drywall Screws Fine-Thread 3.5x25mm (1000pcs)",
+      "slug": "profix-drywall-screws-fine-thread-3-5x25mm-1000",
+      "categorySlug": "fasteners-accessories",
+      "manufacturer": "ProFix Fastening Technologies N.V.",
+      "price": 9.50,
+      "unit": "box (1000pcs)",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "Hardened carbon steel bugle head drywall screws with phosphate coating and needle point for fixing plasterboard to 0.7mm steel studs.",
+      "data": {
+        "screw_diameter_mm": 3.5,
+        "screw_length_mm": 25,
+        "drive_type": "Phillips PH2",
+        "head_style": "Bugle Head (Trumpet Shape)",
+        "thread_pitch_tpi": 24,
+        "surface_treatment": "Black Phosphate (48-Hour Salt Spray Resistance)",
+        "pullout_force_from_06mm_steel_n": 480,
+        "standards": ["EN 14566 (Type TN)", "DIN 18182-2"],
+        "rag_chunk": "PRODUCT OVERVIEW: ProFix TN 25mm fine-thread screws are precision drywall fasteners designed for fixing single-layer 12.5mm plasterboard to light-gauge metal studs up to 0.7mm.\nTECHNICAL PERFORMANCE: Trumpet-shaped bugle head countersinks smoothly beneath the board paper surface without tearing the outer liner.\nINSTALLATION CONSTRAINTS: Drive with a drywall screwdriver fitted with a depth-setting nose cone. Space screws at max 250mm intervals along vertical studs."
+      }
+    },
+    {
+      "sku": "PROF-SCRW-TB35-1000",
+      "name": "ProFix Self-Drilling Tek Screws 3.5x35mm (1000pcs)",
+      "slug": "profix-self-drilling-tek-screws-3-5x35mm-1000",
+      "categorySlug": "fasteners-accessories",
+      "manufacturer": "ProFix Fastening Technologies N.V.",
+      "price": 18.50,
+      "unit": "box (1000pcs)",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "Self-drilling point screws engineered to drill through heavy structural steel profiles up to 2.25mm thick without pilot holes.",
+      "data": {
+        "screw_diameter_mm": 3.5,
+        "screw_length_mm": 35,
+        "drill_point_capacity_mm": 2.25,
+        "point_style": "Hardened #2 Tek Drill Point",
+        "torsional_breaking_torque_nm": 3.8,
+        "drive_type": "PH2 Deep Recess",
+        "standards": ["EN 14566 (Type TB)"],
+        "rag_chunk": "PRODUCT OVERVIEW: ProFix TB 35mm self-drilling screws feature an integrated drill bit tip that bores through heavy 2.0mm structural UA doorframe studs in under 2 seconds without pre-drilling.\nINSTALLATION CONSTRAINTS: Minimum embedment through steel is 3 full exposed thread pitches."
+      }
+    },
+    {
+      "sku": "ACOU-FOAM-TAPE-75",
+      "name": "AcoustiGasket Polyethylene Foam Track Tape 75mm (30m)",
+      "slug": "acoustigasket-polyethylene-foam-track-tape-75mm-30m",
+      "categorySlug": "fasteners-accessories",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 14.80,
+      "unit": "roll (30m)",
+      "imageUrl": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop",
+      "description": "Closed-cell physically cross-linked PE foam tape with synthetic rubber adhesive for decoupling perimeter metal tracks.",
+      "data": {
+        "width_mm": 75,
+        "thickness_mm": 3.2,
+        "roll_length_m": 30,
+        "foam_cell_type": "Closed-Cell Cross-Linked Polyethylene (XLPE)",
+        "density_kg_m3": 33,
+        "temperature_resistance": "-40°C to +90°C",
+        "adhesive_peel_adhesion_n_25mm": 18,
+        "airtightness_class": "Class 4 (EN 12207)",
+        "standards": ["DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: AcoustiGasket 75mm (30m roll) is a resilient cross-linked foam strip applied to the underside of UW 75 floor and ceiling tracks.\nTECHNICAL PERFORMANCE: Seals against structural vibration transmission and airborne smoke leakage across partition perimeters.\nINSTALLATION CONSTRAINTS: Clean steel track free of oil and dust before applying adhesive foam tape."
+      }
+    },
+    {
+      "sku": "PROF-ANCH-CEIL-06",
+      "name": "ProFix Hammer-Drive Ceiling Wedge Anchor 6x40mm (100pcs)",
+      "slug": "profix-hammer-drive-ceiling-wedge-anchor-6x40mm-100",
+      "categorySlug": "fasteners-accessories",
+      "manufacturer": "ProFix Fastening Technologies N.V.",
+      "price": 19.50,
+      "unit": "box (100pcs)",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "All-steel fireproof expansion wedge anchor designed for structural overhead suspension of acoustic ceiling hangers in cracked concrete.",
+      "data": {
+        "drill_hole_diameter_mm": 6,
+        "anchor_length_mm": 40,
+        "effective_anchorage_depth_mm": 32,
+        "characteristic_pullout_resistance_c2025_kn": 4.5,
+        "fire_resistance_class": "R120 (EN 1363-1)",
+        "material_grade": "Galvanized Carbon Steel Grade 8.8",
+        "standards": ["ETA-11/0268 Option 1 (Cracked Concrete)"],
+        "rag_chunk": "PRODUCT OVERVIEW: ProFix Ceiling Wedge Anchor 6x40mm is an all-steel expansion anchor engineered for structural overhead fixing of suspended ceiling grids into cracked and uncracked concrete.\nTECHNICAL PERFORMANCE: ETA Option 1 approved for overhead tensile loads. Fire resistance rating R120.\nINSTALLATION CONSTRAINTS: Drill 6mm hole to 40mm depth, insert anchor through hanger bracket, and drive flush with a hammer."
+      }
+    },
+
+    {
+      "sku": "PYRO-PIPE-COLLAR-110",
+      "name": "PyroWrap Intumescent Pipe Fire Collar 110mm",
+      "slug": "pyrowrap-intumescent-pipe-fire-collar-110mm",
+      "categorySlug": "firestop-seals",
+      "manufacturer": "PyroSafe Barrier Technologies",
+      "price": 28.50,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "Galvanized steel casing containing multi-layer expanding graphite intumescent material to crush combustible plastic pipes during a fire.",
+      "data": {
+        "pipe_diameter_capacity_mm": 110,
+        "fire_resistance_rating": "EI 120 (EN 1366-3)",
+        "expansion_ratio": "25 : 1 at 180°C",
+        "casing_material": "1.0mm Galvanized Steel with Quick-Lock Latch",
+        "compatible_pipe_materials": ["PVC-U", "PP", "PE-HD", "Acoustic Drainage Pipes"],
+        "standards": ["EN 1366-3", "ETA-17/0410", "CE Marked"],
+        "rag_chunk": "PRODUCT OVERVIEW: PyroWrap Fire Collar 110mm is a passive fire protection device that mounts around combustible plastic drainage and soil pipes penetrating fire-rated drywall partitions.\nTECHNICAL PERFORMANCE: When temperatures reach 180°C, the high-pressure intumescent graphite core expands up to 25 times its original volume, crushing and sealing the melting plastic pipe to maintain an EI 120 fire barrier.\nINSTALLATION CONSTRAINTS: Must be secured to both sides of the drywall partition using M6 steel hollow wall expansion anchors."
+      }
+    },
+    {
+      "sku": "PYRO-SEAL-F90-310",
+      "name": "PyroSafe Intumescent FireStop Mastic (310ml)",
+      "slug": "pyrosafe-intumescent-firestop-mastic-310ml",
+      "categorySlug": "firestop-seals",
+      "manufacturer": "PyroSafe Barrier Technologies",
+      "price": 14.80,
+      "unit": "cartridge",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "High-expansion intumescent acrylic sealant designed to seal pipe/cable penetrations and perimeter joints in fire barriers.",
+      "data": {
+        "expansion_onset_temperature_celsius": 140,
+        "intumescent_expansion_ratio": "4.2 : 1",
+        "fire_resistance_class": "EI 120 (EN 1366-3)",
+        "movement_accommodation_percent": 15,
+        "viscosity_cps": 180000,
+        "smoke_tightness": "Class S (EN 13501-2)",
+        "standards": ["EN 1366-3", "EN 1366-4", "ETA-15/0420"],
+        "rag_chunk": "PRODUCT OVERVIEW: PyroSafe Intumescent FireStop Mastic 310ml is an acrylic sealant engineered for sealing cable bundles, conduits, and linear joint gaps in fire partitions.\nTECHNICAL PERFORMANCE: Expands over 400% when exposed to temperatures exceeding 140°C, forming a hard carbonaceous insulating barrier that prevents fire and toxic smoke passage for up to 120 minutes.\nINSTALLATION CONSTRAINTS: Ensure joint gap is backed with non-combustible stone wool before applying mastic. Smooth with a damp trowel."
+      }
+    },
+    {
+      "sku": "PYRO-PILLOW-TEMP-200",
+      "name": "PyroBlock Reusable Intumescent Fire Pillows",
+      "slug": "pyroblock-reusable-intumescent-fire-pillows",
+      "categorySlug": "firestop-seals",
+      "manufacturer": "PyroSafe Barrier Technologies",
+      "price": 18.00,
+      "unit": "piece",
+      "imageUrl": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop",
+      "description": "Flexible intumescent cushion bags filled with heat-reactive mineral fibers for temporary or re-penetrable cable tray openings in server rooms.",
+      "data": {
+        "dimensions_mm": "300 x 200 x 30",
+        "fire_resistance_rating": "EI 90 (EN 1366-3)",
+        "reusable": true,
+        "dust_free_cleanroom_certified": true,
+        "standards": ["EN 1366-3", "DIN 4102-9"],
+        "rag_chunk": "PRODUCT OVERVIEW: PyroBlock Fire Pillows provide re-enterable fire barriers in server rooms, telecom hubs, and cable shafts where new wiring is regularly pulled.\nINSTALLATION CONSTRAINTS: Interlock pillows tightly in a brick-bond pattern around cable trays."
+      }
+    },
+
+    {
+      "sku": "EXT-SHEATH-GUARD-125",
+      "name": "NordicShield WeatherGuard Exterior Sheathing 12.5mm",
+      "slug": "nordicshield-weatherguard-exterior-sheathing-12-5mm",
+      "categorySlug": "facade-weatherproofing",
+      "manufacturer": "NordicShield Gypsum AB",
+      "price": 24.00,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop",
+      "description": "External gypsum sheathing board with water-repellent glass mat facing for ventilated rainscreen facades and steel frame external walls.",
+      "data": {
+        "uv_weather_exposure_max_months": 12,
+        "fire_classification": "Euroclass A1 Non-combustible",
+        "water_absorption_rate_percent": 2.8,
+        "vapor_permeance_perm": 22.0,
+        "thickness_mm": 12.5,
+        "density_kg_m3": 850,
+        "standards": ["EN 15283-1 (Type GM-F-H1-I)", "EN 13501-1"],
+        "rag_chunk": "PRODUCT OVERVIEW: NordicShield WeatherGuard 12.5mm (EN 15283-1) is a specialized external gypsum sheathing panel wrapped in hydrophobic non-woven glass mat facing for building envelope weatherization.\nTECHNICAL PERFORMANCE: Withstands 12 months direct UV solar and rain exposure before facade cladding is hung. Rated Euroclass A1 non-combustible. Highly breathable (22 Perms) to permit internal structure drying.\nINSTALLATION CONSTRAINTS: Fasten onto light gauge steel framing or timber studs using weather-resistant coated exterior screws. Seal all vertical and horizontal board seams with UV-stable facade joint tape."
+      }
+    },
+    {
+      "sku": "EXT-MEMB-BREATH-50M",
+      "name": "VaporShield Breathable Facade Membrane (50m)",
+      "slug": "vaporshield-breathable-facade-membrane-50m",
+      "categorySlug": "facade-weatherproofing",
+      "manufacturer": "IsoThermal Engineering S.A.",
+      "price": 145.00,
+      "unit": "roll (75m²)",
+      "imageUrl": "https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?q=80&w=800&auto=format&fit=crop",
+      "description": "Multi-layer monolithic polypropylene vapor-permeable membrane engineered to block wind-driven rain while allowing interior vapor escape.",
+      "data": {
+        "roll_dimensions": "50m x 1.5m (75 m²)",
+        "sd_vapor_diffusion_value_m": 0.02,
+        "water_column_resistance_class": "Class W1 (EN 1928)",
+        "fire_reaction": "Class B-s1,d0",
+        "uv_resistance_months": 4,
+        "standards": ["EN 13859-2", "CE"],
+        "rag_chunk": "PRODUCT OVERVIEW: VaporShield Breathable Membrane is an external weather-barrier membrane designed for ventilated rainscreen claddings.\nTECHNICAL PERFORMANCE: Water column resistance W1 prevents wind-driven rain infiltration. Sd value of 0.02m ensures building envelope breathability.\nINSTALLATION CONSTRAINTS: Overlap seams by minimum 100mm and bond using integrated acrylic adhesive strips."
+      }
+    },
+
+    {
+      "sku": "FLR-RESIL-CORK-08",
+      "name": "SonorDecouple Cork-Rubber Impact Mat 8mm",
+      "slug": "sonordecouple-cork-rubber-impact-mat-8mm",
+      "categorySlug": "flooring-underlay",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 12.90,
+      "unit": "m²",
+      "imageUrl": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop",
+      "description": "High-density composite matrix of recycled tire granulate and natural cork designed for floating screed floor impact decoupling.",
+      "data": {
+        "impact_sound_reduction_delta_lw_db": 28,
+        "dynamic_stiffness_mn_m3": 18,
+        "max_continuous_load_kpa": 50,
+        "density_kg_m3": 460,
+        "thickness_mm": 8.0,
+        "roll_dimensions": "10m x 1m",
+        "standards": ["EN ISO 10140-3", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: SonorDecouple 8mm is an acoustic impact underlayment composed of selected recycled rubber polymers and cork granulate bound with polyurethane elastomer.\nTECHNICAL PERFORMANCE: Reduces footstep impact sound transmission across concrete floor slabs by Delta Lw = 28 dB according to EN ISO 10140-3.\nINSTALLATION CONSTRAINTS: Lay edge-to-edge on flat structural subfloors. Seal all butt joints with waterproof tape before pouring liquid or cementitious screeds to avoid acoustic bridges."
+      }
+    },
+    {
+      "sku": "FLR-EDGE-STRIP-10",
+      "name": "AcoustiEdge Perimeter Foam Flanking Strip (25m)",
+      "slug": "acoustiedge-perimeter-foam-flanking-strip-25m",
+      "categorySlug": "flooring-underlay",
+      "manufacturer": "AcoustiTech Acoustic Solutions GmbH",
+      "price": 18.50,
+      "unit": "roll (25m)",
+      "imageUrl": "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=800&auto=format&fit=crop",
+      "description": "L-shaped polyethylene perimeter expansion strip with integrated foil apron to isolate floating screeds from perimeter walls.",
+      "data": {
+        "height_mm": 150,
+        "thickness_mm": 8.0,
+        "roll_length_m": 25,
+        "integrated_foil_skirt_width_mm": 200,
+        "foam_density_kg_m3": 25,
+        "standards": ["DIN 18560", "DIN 4109"],
+        "rag_chunk": "PRODUCT OVERVIEW: AcoustiEdge Perimeter Strip prevents acoustic flanking by mechanically isolating floating screed slabs from perimeter drywall studs and walls.\nINSTALLATION CONSTRAINTS: Fix along all wall bases before screed pour. Trim excess foam flush with finished floor level only after tiling is completed."
+      }
+    }
+  ]
+}
