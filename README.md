@@ -4,7 +4,7 @@
 
 BuildStack is a next-generation materials discovery platform. Instead of navigating a passive catalog, users interact with an **Active AI Solution Architect** that uses a conversational wizard to generate tailored material plans and answer complex technical questions.
 
-Built with Next.js, an Express/FastAPI split microservice architecture, and Neon Serverless Postgres (`pgvector`).
+Built with Next.js, an Express/FastAPI split microservice architecture, and a PostgreSQL database.
 
 ---
 
@@ -22,7 +22,7 @@ Built with Next.js, an Express/FastAPI split microservice architecture, and Neon
 - **Frontend:** Next.js 16 (App Router), React 19, Tailwind CSS v4, shadcn/ui, Framer Motion
 - **Core API:** Node.js, Express, TypeORM, PostgreSQL
 - **AI Service:** Python, FastAPI, LangChain, Ollama (Local inference via Qwen 27B / Cloud LLMs)
-- **Database:** Neon Serverless Postgres
+- **Database:** PostgreSQL (with `pgvector` extension for embeddings)
 - **Gateway & Infrastructure:** NGINX, Docker Compose
 
 ---
