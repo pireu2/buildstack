@@ -53,8 +53,11 @@ export class SeedInitialData1740441600000 implements MigrationInterface {
 
   public async down(queryRunner: QueryRunner): Promise<void> {
     console.log('[Migration] Reverting initial seed data...');
-    await queryRunner.query('DELETE FROM products');
-    await queryRunner.query('DELETE FROM categories');
+    const productRepo = queryRunner.manager.getRepository(Product);
+    const categoryRepo = queryRunner.manager.getRepository(Category);
+
+    await productRepo.clear();
+    await categoryRepo.clear();
     console.log('[Migration] Initial seed data deleted.');
   }
 }
