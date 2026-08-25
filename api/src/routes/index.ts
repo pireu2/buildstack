@@ -2,11 +2,13 @@ import { Router } from 'express';
 import categoriesRoutes from './categories.routes';
 import productsRoutes from './products.routes';
 import projectsRoutes from './projects.routes';
+import knowledgeRoutes from './knowledge.routes';
 
 const router = Router();
 
 router.use('/categories', categoriesRoutes);
 router.use('/products', productsRoutes);
 router.use('/projects', projectsRoutes);
+router.use('/knowledge', knowledgeRoutes);
 
 export default router;

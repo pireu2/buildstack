@@ -22,6 +22,7 @@ export interface Product {
   category?: Category;
   createdAt?: string;
   updatedAt?: string;
+  similarityScore?: number;
 }
 
 export interface ProductQueryParams {
@@ -33,6 +34,7 @@ export interface ProductQueryParams {
   minPrice?: number;
   maxPrice?: number;
   sortBy?: 'price_asc' | 'price_desc' | 'name_asc' | 'name_desc' | 'newest';
+  isAiSearch?: boolean;
 }
 
 export interface ProductsResponse {
@@ -56,4 +58,24 @@ export interface CategoriesResponse {
 export interface ProductDetailResponse {
   success: boolean;
   data: Product;
+}
+
+export interface AiSearchResultItem {
+  id: string;
+  entity_id: string;
+  entity_type: 'product' | 'knowledge_doc';
+  code: string;
+  title: string;
+  category: string;
+  content: string;
+  metadata: Record<string, any>;
+  similarity_score: number;
+  distance: number;
+}
+
+export interface AiSearchResponse {
+  success: boolean;
+  query: string;
+  count: number;
+  data: AiSearchResultItem[];
 }

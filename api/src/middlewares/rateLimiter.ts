@@ -1,16 +1,17 @@
 import rateLimit from 'express-rate-limit';
 import { Request, Response } from 'express';
+import { RATE_LIMIT_CONSTANTS } from '../config/constants';
 
 export const apiRateLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute window
-  max: 60, // Limit each IP to 60 requests per window
-  standardHeaders: true, // Return rate limit info in `RateLimit-*` headers
-  legacyHeaders: false, // Disable `X-RateLimit-*` headers
+  windowMs: RATE_LIMIT_CONSTANTS.WINDOW_MS,
+  max: RATE_LIMIT_CONSTANTS.MAX_REQUESTS,
+  standardHeaders: true,
+  legacyHeaders: false,
   handler: (req: Request, res: Response) => {
     res.status(429).json({
       error: 'rate_limit_exceeded',
       message: 'Too many requests. Please wait a moment before trying again.',
-      retry_after_seconds: 60,
+      retry_after_seconds: RATE_LIMIT_CONSTANTS.RETRY_AFTER_SECONDS,
     });
   },
 });
