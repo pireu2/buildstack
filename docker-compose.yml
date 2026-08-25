@@ -19,6 +19,8 @@ services:
       - DATABASE_URL=${DATABASE_URL}
     ports:
       - "5000:5000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   ai-service:
     build:
@@ -26,10 +28,17 @@ services:
       dockerfile: Dockerfile
     environment:
       - PORT=8000
-      - AI_BASE_URL=${AI_BASE_URL:-http://host.docker.internal:11434/v1}
-      - AI_API_KEY=${AI_API_KEY:-ollama}
       - DATABASE_URL=${DATABASE_URL}
+      - CORE_API_URL=http://api:5000/api/v1/core
+      - AI_BASE_URL=${DOCKER_AI_BASE_URL:-http://host.docker.internal:11434/v1}
+      - AI_API_KEY=${AI_API_KEY:-ollama}
+      - LLM_MODEL=${LLM_MODEL:-mistral:latest}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-nomic-embed-text}
+      - EMBEDDING_DIM=${EMBEDDING_DIM:-768}
+      - VECTOR_SCHEMA=${VECTOR_SCHEMA:-ai}
     ports:
       - "8000:8000"
     volumes:
       - ./ai-service:/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

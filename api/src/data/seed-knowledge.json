@@ -1,0 +1,316 @@
+[
+  {
+    "code": "DIN-4109-PARTY-WALL",
+    "title": "DIN 4109 Acoustic Requirements: Apartment Separating Walls",
+    "category": "acoustic",
+    "standard": "DIN 4109-1",
+    "summary": "Mandatory sound insulation standards for separating walls between independent residential units (Wohnungstrennwaende).",
+    "content": "# DIN 4109-1: Acoustic Insulation for Apartment Separating Walls\n\n## Mandatory Legal Minimum Standard\nAccording to DIN 4109-1 (Table 1), the required weighted apparent sound reduction index in situ for walls separating distinct residential units (Wohnungstrennwaende) is:\nR'w >= 53 dB\n\n## Distinction: Laboratory (Rw) vs. Built In-Situ (R'w)\n* Rw (Laboratory Value): Acoustic reduction measured in an acoustic test rig without acoustic flanking transmission.\n* R'w (In-Situ Value): Actual acoustic reduction measured on-site in the finished building including flanking sound transfer via connected floors, ceilings, and adjacent flanking walls.\n* To reliably achieve R'w >= 53 dB on site, laboratory tested dry assembly systems must provide Rw >= 56-58 dB to compensate for flanking margins (standard safety margin Delta R = 2-5 dB).\n\n## Recommended Drywall Construction Systems\n1. Standard Double Stud Wall (Knauf W115): Double CW 50 metal studs with 5mm acoustic decoupling tape between framing tracks, insulated with 2x 40mm mineral wool (density >= 15 kg/m3), lined with 2x 12.5mm high-density acoustic gypsum boards (e.g. Diamant/Piano) on each side -> Rw approx 65-70 dB.\n2. High-Performance Single Stud Wall (Knauf W112 with acoustic boards): CW 75 or CW 100 stud, 60-80mm mineral wool (>= 30 kg/m3), 2x 12.5mm acoustic boards on each side with staggered joints -> Rw approx 58-61 dB.\n\n## Critical Installation Pitfalls\n* Acoustic Sealing Tape: UW and CW perimeter profiles must be lined with closed-cell elastomeric acoustic tape (Dichtungsband) along all structural floor, ceiling, and wall connections.\n* Staggered Joints: First and second board layers must have seams offset by at least 400mm.\n* Back-to-Back Electrical Outlets: Never install electrical sockets directly opposite each other in the same stud cavity. Minimum lateral offset: 400mm, with acoustic putty boxes (Schallschutzdosen).",
+    "metadata": {
+      "min_rw_prime_db": 53,
+      "recommended_lab_rw_db": 58,
+      "flanking_margin_db": 4,
+      "recommended_systems": [
+        "KNAUF-W115",
+        "KNAUF-W112-DIAMANT"
+      ],
+      "insulation_type": "mineral_wool",
+      "min_insulation_density_kg_m3": 15
+    }
+  },
+  {
+    "code": "DIN-4109-OFFICE-PARTITION",
+    "title": "DIN 4109 & VDI 2569: Commercial Office & Meeting Room Acoustic Partitions",
+    "category": "acoustic",
+    "standard": "DIN 4109-1 / VDI 2569",
+    "summary": "Acoustic insulation criteria for internal office partitions, consultation rooms, and executive boardrooms.",
+    "content": "# DIN 4109 & VDI 2569: Office and Commercial Partitions\n\n## Acoustic Requirements\n* Standard Office to Corridor / Adjacent Workspaces: R'w >= 37-42 dB\n* Offices to Conference Rooms / Meeting Rooms: R'w >= 47 dB\n* Confidential Executive / Medical Consultation Rooms: R'w >= 52 dB\n\n## Door and Glazing Flanking Rules\n* When a partition wall includes a door set, the overall acoustic insulation is heavily compromised by the door leaf and perimeter threshold seals.\n* Standard rule of thumb: R'w(Wall) = Rw(Door) + 15 dB.\n* For a meeting room requiring R'w = 42 dB, the installed door set must have a certified rating of at least Rw >= 37 dB (Class 3 acoustic door with automatic drop-down bottom seal).\n\n## Recommended System Configurations\n* Standard Partitions (Rw approx 45-48 dB): CW 75 stud, 1x 12.5mm gypsum board each side (Knauf W111), 50mm acoustic mineral wool.\n* High-Privacy Partitions (Rw approx 55-58 dB): CW 75 stud, 2x 12.5mm acoustic boards each side (Knauf W112), 60mm mineral wool.",
+    "metadata": {
+      "standard_office_rw_prime_db": 42,
+      "meeting_room_rw_prime_db": 47,
+      "confidential_room_rw_prime_db": 52,
+      "recommended_systems": [
+        "KNAUF-W111",
+        "KNAUF-W112"
+      ]
+    }
+  },
+  {
+    "code": "DIN-4109-STAIRWELL",
+    "title": "DIN 4109: Stairwells and Common Hallway Enclosures",
+    "category": "acoustic",
+    "standard": "DIN 4109-1",
+    "summary": "Acoustic requirements protecting habitable rooms from noise generated in public stairwells and access corridors.",
+    "content": "# DIN 4109: Acoustic Isolation for Stairwells and Corridors\n\n## Regulatory Requirements\n* Walls between Stairwells and Habitable Living/Bedrooms: Mandatory R'w >= 52 dB.\n* Walls between Public Corridors and Habitable Rooms: Mandatory R'w >= 47 dB.\n\n## Construction Details\n* Stair flight landings and flights must have structural elastomeric impact sound decoupling elements (Tronsolen / Schoeck Tronsole) to prevent solid-borne sound transmission into adjacent dwelling walls.\n* Drywall partitions facing stairwells typically require robust impact resistance (DIN 18181 / EN 520 Type I / R - e.g. Knauf Diamant or fiber gypsum boards) to resist structural impact and heavy public traffic.",
+    "metadata": {
+      "stairwell_to_living_rw_prime_db": 52,
+      "corridor_to_living_rw_prime_db": 47,
+      "impact_decoupling_mandatory": true
+    }
+  },
+  {
+    "code": "VDI-4100-COMFORT-CLASSES",
+    "title": "VDI 4100: Acoustic Comfort Levels in Residential Buildings",
+    "category": "acoustic",
+    "standard": "VDI 4100",
+    "summary": "Enhanced acoustic comfort standards classifying residential privacy into Sound Insulation Levels SSt I, SSt II, and SSt III.",
+    "content": "# VDI 4100: Sound Insulation Levels (Schallschutzstufen)\n\nWhile DIN 4109 specifies only the bare legal minimum to prevent health hazards, VDI 4100 defines three quality and comfort tiers for multi-family residential buildings:\n\n| Sound Insulation Level | Apartment Separating Wall (R'w) | Ceiling Airborne Sound (R'w) | Ceiling Impact Sound (L'n,w) | Subjective Perception |\n| :--- | :--- | :--- | :--- | :--- |\n| SSt I (Standard Legal Minimum) | >= 53 dB | >= 54 dB | <= 50 dB | Normal conversation audible in quiet periods |\n| SSt II (Enhanced Comfort) | >= 56 dB | >= 57 dB | <= 44 dB | Normal conversation generally inaudible; loud speech muffled |\n| SSt III (Luxury / Maximum Privacy) | >= 59 dB | >= 60 dB | <= 39 dB | Elevated privacy; home cinema / music playback substantially dampened |\n\n## Key Design Rule\nFor high-end residential renovations, target VDI 4100 SSt II or III by utilizing double-stud acoustic drywall systems (W115) and elastic ceiling hangers rather than single stud basic partitions.",
+    "metadata": {
+      "sst_i_rw_db": 53,
+      "sst_ii_rw_db": 56,
+      "sst_iii_rw_db": 59,
+      "sst_i_lnw_db": 50,
+      "sst_ii_lnw_db": 44,
+      "sst_iii_lnw_db": 39
+    }
+  },
+  {
+    "code": "EN-13501-1-REACTION-TO-FIRE",
+    "title": "EN 13501-1: Euroclass Reaction to Fire Classification System",
+    "category": "fire_safety",
+    "standard": "EN 13501-1",
+    "summary": "European standard defining material combustibility classes (A1 to F), smoke emission (s1-s3), and flaming droplets (d0-d2).",
+    "content": "# EN 13501-1: Euroclass Reaction to Fire\n\nThe European standard EN 13501-1 harmonizes building material fire performance into a 3-part classification: [Main Class]-[Smoke Class],[Droplet Class] (e.g. A2-s1, d0).\n\n## 1. Main Combustibility Classes\n* A1 (Non-Combustible): No contribution to fire growth (e.g. glass wool, rock mineral wool, gypsum core, stainless steel studs, calcium silicate boards).\n* A2 (Non-Combustible / Negligible Combustible Content): E.g., paper-faced gypsum plasterboards (A2-s1, d0).\n* B (Very Limited Contribution): E.g., fire-retardant treated timber or high-grade PUR foams.\n* C (Limited Contribution): E.g., phenolic foam insulation, treated MDF.\n* D (Acceptable Contribution): E.g., standard untreated structural wood, chipboard.\n* E (High Contribution): E.g., standard EPS insulation.\n* F (Unclassified / No Performance Determined).\n\n## 2. Smoke Production Classes (s)\n* s1 (Low): Little to no smoke generation under flaming exposure.\n* s2 (Medium): Moderate smoke production.\n* s3 (High): Heavy smoke generation.\n\n## 3. Flaming Droplets / Particles (d)\n* d0: No flaming droplets within 600 seconds of exposure.\n* d1: Brief flaming droplets (< 10 seconds).\n* d2: Persistent flaming droplets (high risk of secondary ignition).",
+    "metadata": {
+      "top_classes": [
+        "A1",
+        "A2-s1,d0",
+        "B-s1,d0"
+      ],
+      "smoke_classes": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "droplet_classes": [
+        "d0",
+        "d1",
+        "d2"
+      ],
+      "gypsum_standard_class": "A2-s1,d0",
+      "mineral_wool_class": "A1"
+    }
+  },
+  {
+    "code": "EN-13501-2-FIRE-RESISTANCE",
+    "title": "EN 13501-2: Fire Resistance Ratings for Non-Loadbearing Partitions",
+    "category": "fire_safety",
+    "standard": "EN 13501-2",
+    "summary": "Classification criteria for drywall systems and partitions under fire exposure (EI 30, EI 60, EI 90, EI 120).",
+    "content": "# EN 13501-2: Fire Resistance Classifications (EI Ratings)\n\nFire resistance measures the duration (in minutes) a complete building element maintains its functional integrity and thermal insulation when exposed to standard fire curve testing (ISO 834).\n\n## Performance Criteria\n* E (Integrity / Raumabschluss): Ability to prevent fire breakthrough, passage of flames, or hot combustion gases to the unexposed side.\n* I (Thermal Insulation / Waermedaemmung): Ability to limit temperature rise on the unexposed cold surface to an average of Delta T <= 140 K (max individual point Delta T <= 180 K).\n\n## Common Drywall Ratings & Layering Rules\n* EI 30 (F30 - 30 minutes fire resistance):\n  * Single metal stud CW 50/75 with 1x 12.5mm Fireboard (GKF/DF) or 1x 15mm standard board per side.\n  * Cavity insulation: 40mm mineral wool (A1/A2, >= 15 kg/m3).\n* EI 60 (F60 - 60 minutes fire resistance):\n  * Single metal stud CW 50/75 with 2x 12.5mm standard gypsum boards or 1x 18mm fireboard per side.\n  * Cavity insulation: 50mm mineral wool (A1, >= 30 kg/m3).\n* EI 90 (F90 - 90 minutes fire resistance):\n  * Single metal stud CW 75/100 with 2x 12.5mm Fire-rated boards (Type F / DF - Knauf GKF or Diamant) per side.\n  * Cavity insulation: 60mm stone wool (A1, melting point >= 1000 C, >= 30 kg/m3).\n* EI 120 (F120 - 120 minutes fire resistance):\n  * CW 75/100 stud with 3x 12.5mm Fire-rated boards (GKF) or 2x 20mm Knauf Fireboard / Ridurit glass-fiber reinforced panels per side.",
+    "metadata": {
+      "ratings_minutes": [
+        30,
+        60,
+        90,
+        120
+      ],
+      "ei30_min_boards": "1x 12.5mm Type F or 1x 15mm Type A",
+      "ei60_min_boards": "2x 12.5mm Type A or 1x 18mm Type F",
+      "ei90_min_boards": "2x 12.5mm Type F (GKF/Diamant)",
+      "ei120_min_boards": "3x 12.5mm Type F or 2x 20mm Fireboard"
+    }
+  },
+  {
+    "code": "DIN-18534-WATERPROOFING-CLASSES",
+    "title": "DIN 18534: Interior Waterproofing and Water Exposure Classes",
+    "category": "moisture_protection",
+    "standard": "DIN 18534-1 to 6",
+    "summary": "Mandatory German standard classifying indoor moisture exposure into classes W0-I through W3-I for bathrooms, kitchens, and wet rooms.",
+    "content": "# DIN 18534: Waterproofing of Indoor Spaces (Innenraumabdichtung)\n\nDIN 18534 establishes clear water exposure classes (Wassereinwirkungsklassen) dictating board substrates, sealing membranes, and penetrations:\n\n## Water Exposure Classes (Wassereinwirkungsklassen)\n\n### 1. Class W0-I (Low Exposure)\n* Areas: Domestic kitchen walls, guest WC, utility rooms without floor drain.\n* Requirement: Hydrophobic plasterboards (Type H2 / GKBI 12.5mm) or standard boards with moisture-resistant primer. Sealing membrane not mandatory on dry walls, but recommended behind sinks.\n\n### 2. Class W1-I (Moderate Exposure)\n* Areas: Domestic bathroom walls above bathtubs, walls around washbasins, floors in domestic bathrooms without floor drains.\n* Requirement: Water-resistant gypsum boards (GKBI / Type H2) + liquid polymer dispersion waterproofing membrane (Verbundabdichtung AIV-F) applied in 2 coats (dry film thickness >= 0.5mm) with elastomeric sealing tape at wall-to-floor junctions.\n\n### 3. Class W2-I (High Exposure)\n* Areas: Walk-in showers (curbless/barrier-free showers), walls and floors directly sprayed by showerheads, floors with domestic floor drains.\n* Requirement: Highly water-resistant substrate (Type DFH2IR / Knauf Diamant, or cementitious backing boards like Knauf Aquapanel / Wedi). Liquid polymer or flexible mineral sealing slurry (AIV-P) + waterproof pipe collars (Dichtmanschetten) on all plumbing rough-ins.\n\n### 4. Class W3-I (Very High Exposure)\n* Areas: Commercial kitchens, public shower facilities, therapeutic wellness baths.\n* Requirement: Cement-based or glass-mat exterior/interior boards (Aquapanel / Knauf Drystar). Sheet membrane (AIV-B) or reaction resin (epoxy/polyurethane AIV-R). Standard paper-faced gypsum boards strictly prohibited.",
+    "metadata": {
+      "classes": [
+        "W0-I",
+        "W1-I",
+        "W2-I",
+        "W3-I"
+      ],
+      "w0_i_board": "Type H2 (GKBI)",
+      "w1_i_membrane": "Liquid polymer dispersion (2 coats, min 0.5mm)",
+      "w2_i_board": "Type DFH2IR (Diamant) or Cement Board (Aquapanel)",
+      "w3_i_board": "Cement Board / Glass-Mat Board only"
+    }
+  },
+  {
+    "code": "DIN-18181-GYPSUM-BOARD-TYPES",
+    "title": "DIN 18181 & EN 520: Gypsum Plasterboard Specifications and Classification",
+    "category": "drywall_specification",
+    "standard": "DIN 18181 / EN 520",
+    "summary": "Technical classification of gypsum plasterboards: Type A (Standard), Type H2 (Moisture), Type F (Fire), and Type DFH2IR (Multi-Performance / Diamant).",
+    "content": "# DIN 18181 & EN 520: Plasterboard Classification & Standards\n\nUnder European Standard EN 520 and German installation code DIN 18181, plasterboards are categorized by functional property letters:\n\n## Plasterboard Typology (EN 520)\n1. Type A (Standard Plasterboard - GKB):\n   * White/Ivory paper face.\n   * For basic wall and ceiling linings without special fire or moisture requirements.\n   * Density: approx 680-720 kg/m3.\n2. Type H2 (Moisture Resistant - GKBI):\n   * Green paper face, silicone-impregnated gypsum core.\n   * Water absorption <= 10% by mass according to EN 520.\n   * Designated for domestic wet areas (DIN 18534 W0-I and W1-I).\n3. Type F / DF (Fire Resistant - GKF):\n   * Pink or natural paper face, core reinforced with chopped fiberglass filaments.\n   * Retains structural cohesion and prevents shrinkage cracking under fire conditions (EI 30 to EI 120).\n4. Type DFH2IR (Multi-Performance / Knauf Diamant / Rigips Habito):\n   * High-density core (> 800-1000 kg/m3) with glass fibers and hydrophobing agents.\n   * D: Controlled density; F: Fire resistant; H2: Water resistant; I: Enhanced surface hardness (anti-dent); R: High flexural breaking strength.\n   * Provides both extreme acoustic damping (+3-4 dB over standard boards) and heavy load hanging capacity (up to 30 kg per single screw without anchor plugs).",
+    "metadata": {
+      "board_types": [
+        {
+          "code": "Type A",
+          "german_name": "GKB",
+          "color": "white",
+          "density": 700
+        },
+        {
+          "code": "Type H2",
+          "german_name": "GKBI",
+          "color": "green",
+          "water_absorption_percent": 10
+        },
+        {
+          "code": "Type F",
+          "german_name": "GKF",
+          "color": "pink",
+          "fire_reinforced": true
+        },
+        {
+          "code": "Type DFH2IR",
+          "german_name": "Diamant / Habito",
+          "color": "blue",
+          "density": 850,
+          "acoustic_bonus_db": 3.5
+        }
+      ]
+    }
+  },
+  {
+    "code": "RECIPE-KNAUF-W111-BASIC-PARTITION",
+    "title": "Assembly Recipe: Knauf W111 Single Metal Stud Partition (Single-Layer)",
+    "category": "assembly_recipe",
+    "standard": "Knauf W111.de / DIN 18181",
+    "summary": "Lightweight economical non-loadbearing partition wall with single CW stud framing and 1 layer of 12.5mm board on each side.",
+    "content": "# Knauf W111: Single Stud, Single Layer Partition\n\n## Technical Performance\n* Wall Thickness (D): 75 mm (CW 50) / 100 mm (CW 75) / 125 mm (CW 100)\n* Acoustic Insulation (Rw): 42-45 dB\n* Fire Resistance (EI): EI 30 (with GKF/DF boards)\n* Max Partition Height: up to 4.00 m (CW 75 at 625mm spacing)\n* Wall Weight: approx 25 kg/m2\n\n## Component Bill of Materials (per 1 m2 wall surface)\n* CW 75 Studs: 1.8 linear meters (spaced at 625 mm centers)\n* UW 75 Floor/Ceiling Tracks: 0.7 linear meters\n* Acoustic Sealing Foam Tape (70 mm): 1.2 linear meters\n* Insulation: 1.0 m2 Mineral wool 50 mm (density >= 15 kg/m3)\n* Plasterboard: 2.0 m2 Gypsum board 12.5 mm (1 m2 on side A, 1 m2 on side B)\n* Drywall Screws (TN 25): 30 pieces (screw spacing 250 mm)\n* Joint Compound & Paper Tape: 0.6 kg filler + 1.5 m tape\n\n## Application Suitability\n* Ideal for simple room dividers, storage room enclosures, and residential partitions where no strict acoustic separation (e.g. party walls) is required.",
+    "metadata": {
+      "system_code": "W111",
+      "stud_type": "single_cw",
+      "board_layers_per_side": 1,
+      "rw_db": 44,
+      "ei_minutes": 30,
+      "typical_thickness_mm": 100,
+      "weight_kg_m2": 25
+    }
+  },
+  {
+    "code": "RECIPE-KNAUF-W112-STANDARD-PARTITION",
+    "title": "Assembly Recipe: Knauf W112 Single Metal Stud Partition (Double-Layer)",
+    "category": "assembly_recipe",
+    "standard": "Knauf W112.de / DIN 4109 / EN 13501-2",
+    "summary": "High-performance versatile drywall partition with single CW stud framing and 2 layers of 12.5mm boards on each side, offering certified EI 60/90 and Rw 53-58 dB.",
+    "content": "# Knauf W112: Single Stud, Double Layer Partition\n\n## Technical Performance\n* Wall Thickness (D): 100 mm (CW 50) / 125 mm (CW 75) / 150 mm (CW 100)\n* Acoustic Insulation (Rw): \n  * With Standard GKB Boards: Rw = 53-55 dB\n  * With Knauf Diamant / Soundboard: Rw = 58-61 dB\n* Fire Resistance (EI): \n  * With Type A Boards: EI 60\n  * With Type F / GKF Boards: EI 90\n* Max Partition Height: up to 6.00 m (CW 100 at 625mm spacing)\n* Wall Weight: approx 45-52 kg/m2\n\n## Component Bill of Materials (per 1 m2 wall surface)\n* CW 75 Studs: 1.8 linear meters (at 625 mm spacing)\n* UW 75 Tracks: 0.7 linear meters\n* Acoustic Sealing Tape (70 mm): 1.2 linear meters\n* Insulation: 1.0 m2 Acoustic Rockwool/Mineral wool 60 mm (density >= 30 kg/m3)\n* Plasterboard: 4.0 m2 Plasterboards 12.5 mm (2 m2 side A, 2 m2 side B)\n* Drywall Screws (TN 25 for 1st layer): 15 pieces (screw spacing 750 mm)\n* Drywall Screws (TN 35 for 2nd layer): 30 pieces (screw spacing 250 mm)\n* Joint Compound: 1.0 kg filler + 1.5 m reinforcing joint tape\n\n## Installation Key Rules\n1. Stagger outer layer board joints horizontally and vertically by at least 400 mm relative to the first layer.\n2. Fill the first layer joints with joint filler before installing the second layer to ensure airtight acoustic sealing and fire containment.",
+    "metadata": {
+      "system_code": "W112",
+      "stud_type": "single_cw",
+      "board_layers_per_side": 2,
+      "rw_db": 56,
+      "ei_minutes": 90,
+      "typical_thickness_mm": 125,
+      "weight_kg_m2": 48
+    }
+  },
+  {
+    "code": "RECIPE-KNAUF-W113-SECURITY-PARTITION",
+    "title": "Assembly Recipe: Knauf W113 Single Metal Stud Partition (Triple-Layer)",
+    "category": "assembly_recipe",
+    "standard": "Knauf W113.de / EN 13501-2",
+    "summary": "Heavy-duty triple-layer drywall partition designed for maximum fire barrier protection (EI 120) and high sound isolation (Rw 62-65 dB).",
+    "content": "# Knauf W113: Single Stud, Triple Layer Partition\n\n## Technical Performance\n* Wall Thickness (D): 125 mm (CW 50) / 150 mm (CW 75) / 175 mm (CW 100)\n* Acoustic Insulation (Rw): 62-65 dB\n* Fire Resistance (EI): EI 120 (with Type F GKF boards)\n* Wall Weight: approx 68-75 kg/m2\n\n## Component Bill of Materials (per 1 m2)\n* CW 100 Studs: 1.8 m\n* UW 100 Tracks: 0.7 m\n* Plasterboard: 6.0 m2 GKF Fireboards 12.5 mm (3 layers per side)\n* Insulation: 1.0 m2 Stone wool 80 mm (Class A1, melting point >= 1000 C)\n* Fasteners: TN 25 (1st layer), TN 35 (2nd layer), TN 55 (3rd layer)\n\n## Typical Applications\n* Boiler rooms, technical shafts, data center separation walls, bank consultation security partitions, and multi-tenant firewall separations.",
+    "metadata": {
+      "system_code": "W113",
+      "stud_type": "single_cw",
+      "board_layers_per_side": 3,
+      "rw_db": 64,
+      "ei_minutes": 120,
+      "typical_thickness_mm": 175,
+      "weight_kg_m2": 72
+    }
+  },
+  {
+    "code": "RECIPE-KNAUF-W115-ACOUSTIC-STUDIO",
+    "title": "Assembly Recipe: Knauf W115 Decoupled Double Stud Wall (Acoustic Studio / Party Wall)",
+    "category": "assembly_recipe",
+    "standard": "Knauf W115.de / DIN 4109",
+    "summary": "Mechanically decoupled double stud system delivering ultra-high acoustic isolation (Rw 65-72 dB) for recording studios, home cinemas, and luxury party walls.",
+    "content": "# Knauf W115: Acoustically Decoupled Double Stud Partition\n\n## Technical Performance\n* Wall Thickness (D): 155-220 mm (2x CW 50 or 2x CW 75 with 5-10mm air gap between stud rows)\n* Acoustic Insulation (Rw): \n  * With Standard GKB Boards: Rw = 65-67 dB\n  * With Knauf Diamant / Silentboard: Rw = 70-74 dB\n* Fire Resistance (EI): EI 90\n* Wall Weight: approx 55-65 kg/m2\n\n## Acoustic Decoupling Principle\nThe system consists of two independent metal stud rows separated by an elastic acoustic decoupling strip. Because the two faces share zero rigid mechanical bridging across the studs, structure-borne sound transmission is virtually eliminated.\n\n## Component Bill of Materials (per 1 m2)\n* CW 50 Studs: 3.6 linear meters (2 rows spaced at 625 mm)\n* UW 50 Tracks: 1.4 linear meters (2 rows)\n* Acoustic Separation Strip (between rows): 1.8 linear meters\n* Acoustic Perimeter Sealing Tape: 2.4 linear meters\n* Insulation: 2.0 m2 Mineral wool 40 mm (1 layer in each stud cavity)\n* Plasterboard: 4.0 m2 High-density acoustic gypsum boards (Knauf Diamant or Silentboard 12.5 mm, 2 layers each side)\n* Screws: TN 25 (inner layer) + TN 35 (outer layer)",
+    "metadata": {
+      "system_code": "W115",
+      "stud_type": "double_cw_decoupled",
+      "board_layers_per_side": 2,
+      "rw_db": 71,
+      "ei_minutes": 90,
+      "typical_thickness_mm": 160,
+      "weight_kg_m2": 62,
+      "ideal_for": [
+        "recording_studio",
+        "home_cinema",
+        "party_wall",
+        "doctor_surgery"
+      ]
+    }
+  },
+  {
+    "code": "RECIPE-DIN-18534-WET-ROOM-WALL",
+    "title": "Assembly Recipe: Moisture-Resistant Walk-In Shower Wall (DIN 18534 W2-I)",
+    "category": "assembly_recipe",
+    "standard": "DIN 18534-3 / Knauf W112",
+    "summary": "Waterproofed double-layer drywall partition engineered for high-moisture exposure in barrier-free walk-in showers.",
+    "content": "# DIN 18534 W2-I: Waterproof Walk-In Shower Partition\n\n## System Architecture\n1. Framing: CW 75 studs at reduced spacing (312.5 mm or 416 mm centers) for increased tile load rigidity.\n2. Insulation: 60 mm Mineral wool for acoustic comfort.\n3. Substrate Boarding: 2x 12.5 mm Impregnated Plasterboards (Knauf GKBI / Diamant Type DFH2IR) or 12.5 mm Cementitious Aquapanel.\n4. Substrate Primer: Deep-penetrating synthetic dispersion primer.\n5. Liquid Waterproofing Membrane (AIV-F): Polymer dispersion applied in 2 contrasting colored coats (dry thickness >= 0.5 mm).\n6. Elastomeric Sealing Accessories:\n   * Preformed sealing tape embedded into liquid membrane at all floor/wall corners.\n   * Elastic pipe collars with rubber center rings around all 1/2 inch shower mixer elbows.\n7. Tiling: Flexible C2TE S1 polymer-modified tile adhesive.",
+    "metadata": {
+      "water_exposure_class": "W2-I",
+      "board_type": "Type DFH2IR (Diamant) or GKBI",
+      "primer_required": true,
+      "membrane_type": "Liquid polymer dispersion (2 coats)",
+      "stud_spacing_mm": 312.5
+    }
+  },
+  {
+    "code": "RECIPE-D112-ACOUSTIC-CEILING",
+    "title": "Assembly Recipe: Knauf D112 Suspended Acoustic Ceiling with Resilient Hangers",
+    "category": "assembly_recipe",
+    "standard": "Knauf D112.de / DIN 18168",
+    "summary": "Suspended drywall ceiling with metal CD 60/27 profiles and acoustic decoupling spring hangers providing 15-18 dB airborne and impact sound improvement.",
+    "content": "# Knauf D112: Suspended Acoustic Ceiling with Decoupled Hangers\n\n## Technical Performance\n* Suspension Height: 100-300 mm\n* Acoustic Improvement (Delta Rw): +14 to +18 dB sound isolation boost against overhead footfall and airborne noise.\n* Fire Resistance: Up to EI 90 (from below).\n\n## Structural Layout\n* Primary Profiles (CD 60/27): Spaced at max 1000 mm centers, suspended using Nonius hangers equipped with rubber vibration dampers.\n* Secondary Carrying Profiles (CD 60/27): Cross-connected with profile connectors at 400-500 mm centers.\n* Cavity Insulation: 40-60 mm Acoustic mineral wool slab (>= 20 kg/m3).\n* Boarding: 2x 12.5 mm Knauf Silentboard or Diamant acoustic boards, perimeter separated by foam tape.",
+    "metadata": {
+      "system_code": "D112",
+      "delta_rw_db": 16,
+      "hanger_type": "acoustic_decoupled_nonius",
+      "cd_profiles": "CD 60/27"
+    }
+  },
+  {
+    "code": "RECIPE-DRY-SCREED-FLOORING",
+    "title": "Assembly Recipe: Dry Screed Flooring with Impact Sound Decoupling",
+    "category": "assembly_recipe",
+    "standard": "DIN 4109 / DIN 18560",
+    "summary": "Lightweight dry screed gypsum fiber floor elements over resilient acoustic decoupling mat for rapid renovation without moisture introduction.",
+    "content": "# Dry Screed Impact Sound Decoupling Flooring\n\n## Technical Performance\n* Total Assembly Height: 30-45 mm\n* Impact Sound Reduction (Delta Lw): 21 to 25 dB\n* Weight: approx 25-32 kg/m2 (vs 120 kg/m2 for wet screed)\n* Ready for Flooring: Immediately after adhesive curing (24 hours).\n\n## Layering Sequence\n1. Bare Subfloor (Concrete slab or timber joist): Levelled with dry leveling granules if irregular.\n2. Perimeter Insulation Strips (10 mm mineral wool / PE foam): Installed against all wall perimeters to prevent lateral flanking transmission.\n3. Resilient Decoupling Layer: 10 mm High-density acoustic rockwool floor insulation slab (>= 140 kg/m3) or 8 mm recycled rubber-cork decoupling mat.\n4. Dry Screed Elements: 2x 10 mm or 2x 12.5 mm Gypsum fiber elements (Knauf Brio / Fermacell) with rebated lap joints glued with polyurethane screed adhesive and fastened with special screed screws.",
+    "metadata": {
+      "delta_lw_db": 23,
+      "screed_type": "gypsum_fiber_brio",
+      "curing_time_hours": 24,
+      "weight_kg_m2": 28
+    }
+  },
+  {
+    "code": "GUIDE-FIRESTOP-PENETRATIONS",
+    "title": "Engineering Guide: Firestop Penetration Seals for Drywall Partitions",
+    "category": "installation_guide",
+    "standard": "EN 1366-3 / EN 13501-2",
+    "summary": "Mandatory sealing practices for electrical cables, metal conduits, and combustible plastic pipes penetrating fire-rated drywall partitions.",
+    "content": "# Firestop Penetration Seals (Kabel- und Rohrabschottungen)\n\nAny unsealed hole or aperture in a fire-rated partition (EI 60 / EI 90) invalidates the entire wall certificate.\n\n## Requirements by Penetration Type\n1. Combustible Plastic Pipes (PVC/PE/PP):\n   * Must be fitted with certified Intumescent Firestop Pipe Collars (Brandschutzmanschette) on both sides of the drywall.\n   * Under heat (> 150 C), the intumescent material expands up to 25x original volume, crushing the melting pipe and sealing the cavity airtight against fire and toxic smoke.\n2. Electrical Cables & Cable Bundles:\n   * Coated high-density mineral wool board penetration seal (2x 50 mm rockwool coated with ablative firestop mastic).\n   * Single cables sealed with intumescent firestop acrylic sealant (min 25 mm depth).\n3. Metal Pipes (Copper / Steel):\n   * Continuous non-combustible rockwool pipe section insulation (A2_L-s1, d0) + firestop sealant at the annular gap.",
+    "metadata": {
+      "pipe_collar_expansion_temp_celsius": 150,
+      "expansion_ratio": 25,
+      "applicable_standards": [
+        "EN 1366-3",
+        "DIN 4102-9"
+      ]
+    }
+  },
+  {
+    "code": "GUIDE-CONDENSATION-VAPOR-BARRIER",
+    "title": "Engineering Guide: Vapor Retarders and Airtightness in Building Envelopes",
+    "category": "installation_guide",
+    "standard": "DIN 4108-2 / DIN 4108-3 / DIN 4108-7",
+    "summary": "Principles of humidity-variable vapor retarders, airtight sealing, and interstitial condensation prevention in timber-frame and roof assemblies.",
+    "content": "# DIN 4108: Airtightness & Vapor Retarders (Dampfbremsen)\n\n## Fundamental Principles\n* Warm Side Installation: Vapor retarders must always be installed on the warm interior side of the thermal insulation layer.\n* Humidity-Variable Membranes (sd-value 0.2 m to 5.0 m):\n  * In winter (dry indoor heating): Membrane becomes vapor-tight (sd approx 5 m) preventing humid indoor air from penetrating into cold structural cavities.\n  * In summer (reverse diffusion): Membrane opens pores (sd approx 0.2 m) allowing any trapped moisture inside the insulation to safely evaporate into the interior.\n* Airtight Joint Sealing (DIN 4108-7):\n  * All membrane overlaps must be taped with certified aging-resistant acrylic adhesive tapes (e.g. SIGA Sicrall / Pro Clima Tescon Vana).\n  * Connections to solid masonry/concrete must be sealed with permanently elastic airtight adhesive beads.",
+    "metadata": {
+      "sd_value_range_m": "0.2 - 5.0",
+      "airtightness_standard": "DIN 4108-7"
+    }
+  }
+]

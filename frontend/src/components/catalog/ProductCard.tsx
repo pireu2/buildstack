@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Product } from '@/types/catalog';
-import { ArrowRight, Volume2, ShieldAlert, Layers, Gauge, Box } from 'lucide-react';
+import { ArrowRight, Volume2, ShieldAlert, Layers, Gauge, Box, Sparkles } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -11,6 +11,10 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const specs = extractSpecHighlights(product.data);
+  const matchPercent =
+    product.similarityScore !== undefined
+      ? Math.round(product.similarityScore * 100)
+      : null;
 
   return (
     <Link
@@ -33,10 +37,11 @@ export function ProductCard({ product }: ProductCardProps) {
             </div>
           )}
 
-          {/* Category Tag Overlay */}
-          {product.category && (
-            <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-white/95 backdrop-blur-md text-[11px] font-medium text-zinc-800 border border-zinc-200/80 shadow-2xs">
-              {product.category.name}
+          {/* AI Relevance Match Badge */}
+          {matchPercent !== null && (
+            <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-zinc-950/90 backdrop-blur-md text-[11px] font-mono font-semibold text-amber-400 border border-zinc-800 shadow-2xs flex items-center gap-1">
+              <Sparkles className="h-3 w-3 text-amber-400 shrink-0" />
+              <span>{matchPercent}% Match</span>
             </span>
           )}
         </div>

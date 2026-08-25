@@ -1,23 +1,29 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
-import { Navbar } from '@/components/layout/Navbar';
-import { FilterSidebar } from '@/components/catalog/FilterSidebar';
-import { CatalogHeader } from '@/components/catalog/CatalogHeader';
-import { ProductCard } from '@/components/catalog/ProductCard';
-import { ProductGridSkeleton } from '@/components/catalog/ProductGridSkeleton';
-import { Pagination } from '@/components/catalog/Pagination';
-import { fetchCategories, fetchProducts } from '@/lib/api/catalog';
-import { Category, Product, ProductQueryParams } from '@/types/catalog';
+import React, { useState, useEffect, useCallback } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Navbar } from "@/components/layout/Navbar";
+import { FilterSidebar } from "@/components/catalog/FilterSidebar";
+import { CatalogHeader } from "@/components/catalog/CatalogHeader";
+import { ProductCard } from "@/components/catalog/ProductCard";
+import { ProductGridSkeleton } from "@/components/catalog/ProductGridSkeleton";
+import { Pagination } from "@/components/catalog/Pagination";
+import {
+  fetchCategories,
+  fetchProducts,
+  searchProductsSemantic,
+} from "@/lib/api/catalog";
+import { Category, Product, ProductQueryParams } from "@/types/catalog";
+import { CATALOG_CONSTANTS } from "@/lib/constants";
 import {
   PackageSearch,
   RotateCcw,
   SlidersHorizontal,
   ChevronDown,
   ChevronUp,
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
+  Sparkles,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function CatalogPage() {
   return (
@@ -42,37 +48,38 @@ function CatalogContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  // Data State
+  // Catalog Data State
   const [categories, setCategories] = useState<Category[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
-  // Mobile Filter Drawer Toggle State
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
-  // Filter & Search State
-  const [search, setSearch] = useState(searchParams.get('search') || '');
-  const [debouncedSearch, setDebouncedSearch] = useState(search);
-  const [category, setCategory] = useState(searchParams.get('category') || '');
-  const [manufacturers, setManufacturers] = useState<string[]>(
-    searchParams.get('manufacturer')
-      ? searchParams.get('manufacturer')!.split(',')
-      : []
+  // Search & Filter State
+  const [isAiSearch, setIsAiSearch] = useState(
+    searchParams.get("ai") !== "false",
   );
-  const [minPrice, setMinPrice] = useState(searchParams.get('minPrice') || '');
-  const [maxPrice, setMaxPrice] = useState(searchParams.get('maxPrice') || '');
-  const [sortBy, setSortBy] = useState<ProductQueryParams['sortBy']>(
-    (searchParams.get('sortBy') as ProductQueryParams['sortBy']) || 'newest'
+  const [search, setSearch] = useState(searchParams.get("search") || "");
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+  const [category, setCategory] = useState(searchParams.get("category") || "");
+  const [manufacturers, setManufacturers] = useState<string[]>(
+    searchParams.get("manufacturer")
+      ? searchParams.get("manufacturer")!.split(",")
+      : [],
+  );
+  const [minPrice, setMinPrice] = useState(searchParams.get("minPrice") || "");
+  const [maxPrice, setMaxPrice] = useState(searchParams.get("maxPrice") || "");
+  const [sortBy, setSortBy] = useState<ProductQueryParams["sortBy"]>(
+    (searchParams.get("sortBy") as ProductQueryParams["sortBy"]) || "newest",
   );
   const [currentPage, setCurrentPage] = useState(
-    Number(searchParams.get('page')) || 1
+    Number(searchParams.get("page")) || 1,
   );
   const [totalPages, setTotalPages] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
+  const [availableManufacturers, setAvailableManufacturers] = useState<
+    string[]
+  >([]);
 
-  const [availableManufacturers, setAvailableManufacturers] = useState<string[]>([]);
-
-  // 1. Initial Load: Fetch Categories
   useEffect(() => {
     async function loadCategories() {
       const cats = await fetchCategories();
@@ -81,32 +88,37 @@ function CatalogContent() {
     loadCategories();
   }, []);
 
-  // 2. Debounce Search Input (300ms)
   useEffect(() => {
+    const delay = isAiSearch
+      ? CATALOG_CONSTANTS.AI_SEARCH_DEBOUNCE_MS
+      : CATALOG_CONSTANTS.KEYWORD_SEARCH_DEBOUNCE_MS;
+
     const timer = setTimeout(() => {
       setDebouncedSearch(search);
       setCurrentPage(1);
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [search]);
+    }, delay);
 
-  // 3. Sync State to URL Query Parameters
+    return () => clearTimeout(timer);
+  }, [search, isAiSearch]);
+
   const updateUrlParams = useCallback(() => {
     const params = new URLSearchParams();
-    if (debouncedSearch) params.set('search', debouncedSearch);
-    if (category) params.set('category', category);
+    if (debouncedSearch) params.set("search", debouncedSearch);
+    if (!isAiSearch) params.set("ai", "false");
+    if (category) params.set("category", category);
     if (manufacturers.length > 0)
-      params.set('manufacturer', manufacturers.join(','));
-    if (minPrice) params.set('minPrice', minPrice);
-    if (maxPrice) params.set('maxPrice', maxPrice);
-    if (sortBy && sortBy !== 'newest') params.set('sortBy', sortBy);
-    if (currentPage > 1) params.set('page', currentPage.toString());
+      params.set("manufacturer", manufacturers.join(","));
+    if (minPrice) params.set("minPrice", minPrice);
+    if (maxPrice) params.set("maxPrice", maxPrice);
+    if (sortBy && sortBy !== "newest") params.set("sortBy", sortBy);
+    if (currentPage > 1) params.set("page", currentPage.toString());
 
     const newQuery = params.toString();
-    const target = newQuery ? `/catalog?${newQuery}` : '/catalog';
+    const target = newQuery ? `/catalog?${newQuery}` : "/catalog";
     router.replace(target, { scroll: false });
   }, [
     debouncedSearch,
+    isAiSearch,
     category,
     manufacturers,
     minPrice,
@@ -116,69 +128,114 @@ function CatalogContent() {
     router,
   ]);
 
-  // 4. Fetch Products whenever filters change
   useEffect(() => {
+    updateUrlParams();
+  }, [updateUrlParams]);
+
+  useEffect(() => {
+    const controller = new AbortController();
     let isCancelled = false;
 
-    async function loadProducts() {
+    async function loadCatalog() {
       setLoading(true);
 
-      const params: ProductQueryParams = {
-        page: currentPage,
-        limit: 12,
-        search: debouncedSearch || undefined,
-        category: category || undefined,
-        manufacturer:
-          manufacturers.length > 0 ? manufacturers : undefined,
-        minPrice: minPrice ? Number(minPrice) : undefined,
-        maxPrice: maxPrice ? Number(maxPrice) : undefined,
-        sortBy,
-      };
+      const isSemantic =
+        isAiSearch &&
+        debouncedSearch.trim().length >=
+          CATALOG_CONSTANTS.MIN_AI_SEARCH_QUERY_LENGTH;
 
-      const response = await fetchProducts(params);
+      try {
+        if (isSemantic) {
+          const matches = await searchProductsSemantic(debouncedSearch.trim(), {
+            category: category || undefined,
+            minScore: CATALOG_CONSTANTS.DEFAULT_AI_SIMILARITY_THRESHOLD,
+            signal: controller.signal,
+          });
 
-      if (!isCancelled) {
-        if (response && response.data) {
-          setProducts(response.data);
-          setTotalPages(response.pagination?.totalPages || 1);
-          setTotalProducts(response.pagination?.total || 0);
+          if (!isCancelled) {
+            const { paginatedItems, total, totalPages } =
+              processSemanticResults({
+                matches,
+                manufacturers,
+                minPrice,
+                maxPrice,
+                sortBy,
+                currentPage,
+                pageSize: CATALOG_CONSTANTS.DEFAULT_PAGE_SIZE,
+              });
 
-          if (availableManufacturers.length === 0 && response.data.length > 0) {
-            const mfgs = Array.from(
-              new Set(
-                response.data
-                  .map((p) => p.manufacturer)
-                  .filter(Boolean) as string[]
-              )
-            ).sort();
-            setAvailableManufacturers(mfgs);
+            setProducts(paginatedItems);
+            setTotalProducts(total);
+            setTotalPages(totalPages);
+
+            if (availableManufacturers.length === 0 && matches.length > 0) {
+              setAvailableManufacturers(extractUniqueManufacturers(matches));
+            }
+          }
+        } else {
+          const response = await fetchProducts(
+            {
+              page: currentPage,
+              limit: CATALOG_CONSTANTS.DEFAULT_PAGE_SIZE,
+              search: debouncedSearch || undefined,
+              category: category || undefined,
+              manufacturer:
+                manufacturers.length > 0 ? manufacturers : undefined,
+              minPrice: minPrice ? Number(minPrice) : undefined,
+              maxPrice: maxPrice ? Number(maxPrice) : undefined,
+              sortBy,
+            },
+            controller.signal,
+          );
+
+          if (!isCancelled && response?.data) {
+            setProducts(response.data);
+            setTotalPages(response.pagination?.totalPages || 1);
+            setTotalProducts(response.pagination?.total || 0);
+
+            if (
+              availableManufacturers.length === 0 &&
+              response.data.length > 0
+            ) {
+              setAvailableManufacturers(
+                extractUniqueManufacturers(response.data),
+              );
+            }
           }
         }
-        setLoading(false);
+      } catch (error) {
+        if (!isCancelled) {
+          console.error("[Catalog] Fetch error:", error);
+          setProducts([]);
+          setTotalProducts(0);
+          setTotalPages(1);
+        }
+      } finally {
+        if (!isCancelled) setLoading(false);
       }
     }
 
-    loadProducts();
-    updateUrlParams();
+    loadCatalog();
 
     return () => {
       isCancelled = true;
+      controller.abort();
     };
   }, [
     debouncedSearch,
+    isAiSearch,
     category,
     manufacturers,
     minPrice,
     maxPrice,
     sortBy,
     currentPage,
-    updateUrlParams,
+    availableManufacturers.length,
   ]);
 
-  // Filter Handlers
   const handleToggleManufacturer = (mfg: string) => {
     setManufacturers((prev) =>
-      prev.includes(mfg) ? prev.filter((item) => item !== mfg) : [...prev, mfg]
+      prev.includes(mfg) ? prev.filter((item) => item !== mfg) : [...prev, mfg],
     );
     setCurrentPage(1);
   };
@@ -189,13 +246,13 @@ function CatalogContent() {
   };
 
   const handleResetFilters = () => {
-    setSearch('');
-    setDebouncedSearch('');
-    setCategory('');
+    setSearch("");
+    setDebouncedSearch("");
+    setCategory("");
     setManufacturers([]);
-    setMinPrice('');
-    setMaxPrice('');
-    setSortBy('newest');
+    setMinPrice("");
+    setMaxPrice("");
+    setSortBy("newest");
     setCurrentPage(1);
   };
 
@@ -214,17 +271,17 @@ function CatalogContent() {
       <Navbar />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 w-full flex-1">
-        {/* Page Header */}
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-950">
             Materials & Systems Catalog
           </h1>
           <p className="text-sm text-zinc-500 mt-1">
-            Filter certified building products by acoustic rating (dB), fire resistance (EI), dimensions, and manufacturer.
+            Filter certified building products by acoustic rating (dB), fire
+            resistance (EI), dimensions, and manufacturer.
           </p>
         </div>
 
-        {/* MOBILE FILTERS TOGGLE BUTTON (Placed at the TOP on mobile) */}
+        {/* Mobile Filter Toggle Drawer */}
         <div className="lg:hidden mb-6">
           <button
             type="button"
@@ -247,7 +304,6 @@ function CatalogContent() {
             )}
           </button>
 
-          {/* Collapsible Filter Panel on Mobile */}
           {mobileFiltersOpen && (
             <div className="mt-3 p-5 bg-white border border-zinc-200 rounded-xl shadow-sm animate-in fade-in duration-150">
               <FilterSidebar
@@ -277,9 +333,8 @@ function CatalogContent() {
           )}
         </div>
 
-        {/* 2-Column Catalog Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
-          {/* Left Filter Sidebar (Visible on Desktop) */}
+          {/* Desktop Filter Sidebar */}
           <div className="hidden lg:block lg:col-span-1 bg-white p-5 rounded-2xl border border-zinc-200/90 shadow-2xs sticky top-20">
             <FilterSidebar
               categories={categories}
@@ -303,12 +358,16 @@ function CatalogContent() {
             />
           </div>
 
-          {/* Right Product Grid Column */}
+          {/* Product Grid Column */}
           <div className="lg:col-span-3">
-            {/* Header: Search, Sort, Filter Chips */}
             <CatalogHeader
               search={search}
               onSearchChange={setSearch}
+              isAiSearch={isAiSearch}
+              onToggleAiSearch={(active) => {
+                setIsAiSearch(active);
+                setCurrentPage(1);
+              }}
               sortBy={sortBy}
               onSortChange={(val) => {
                 setSortBy(val);
@@ -316,18 +375,17 @@ function CatalogContent() {
               }}
               totalProducts={totalProducts}
               selectedCategoryName={selectedCategoryObj?.name}
-              onClearCategory={() => setCategory('')}
+              onClearCategory={() => setCategory("")}
               selectedManufacturers={manufacturers}
               onRemoveManufacturer={handleToggleManufacturer}
               minPrice={minPrice}
               maxPrice={maxPrice}
               onClearPrice={() => {
-                setMinPrice('');
-                setMaxPrice('');
+                setMinPrice("");
+                setMaxPrice("");
               }}
             />
 
-            {/* Product Cards or Skeleton Loader */}
             {loading ? (
               <ProductGridSkeleton count={6} />
             ) : products.length > 0 ? (
@@ -338,25 +396,60 @@ function CatalogContent() {
                   ))}
                 </div>
 
-                {/* Pagination Controls */}
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={(page) => {
-                    setCurrentPage(page);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                />
+                {totalPages > 1 && (
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={(page) => {
+                      setCurrentPage(page);
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }}
+                  />
+                )}
               </>
+            ) : isAiSearch && debouncedSearch ? (
+              <div className="py-16 text-center rounded-2xl border border-dashed border-amber-300/80 bg-amber-50/30 p-8">
+                <div className="h-10 w-10 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center mx-auto mb-3">
+                  <Sparkles className="h-5 w-5" />
+                </div>
+                <h3 className="text-base font-semibold text-zinc-900">
+                  No materials matched your project description
+                </h3>
+                <p className="text-xs text-zinc-600 mt-1.5 max-w-md mx-auto leading-relaxed">
+                  Try describing the structural problem (e.g. &ldquo;soundproof
+                  studio wall&rdquo;, &ldquo;bathroom wet room backing
+                  board&rdquo;, &ldquo;EI 90 fire partition&rdquo;) or switch to
+                  standard keyword search.
+                </p>
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  <Button
+                    onClick={() => setIsAiSearch(false)}
+                    variant="default"
+                    size="sm"
+                    className="bg-amber-600 hover:bg-amber-700 text-white text-xs font-medium cursor-pointer"
+                  >
+                    Switch to Keyword Search
+                  </Button>
+                  <Button
+                    onClick={handleResetFilters}
+                    variant="outline"
+                    size="sm"
+                    className="border-zinc-200 text-xs font-medium cursor-pointer"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5 mr-1.5" />
+                    <span>Reset Filters</span>
+                  </Button>
+                </div>
+              </div>
             ) : (
-              /* Clean Empty State */
               <div className="py-20 text-center rounded-2xl border border-dashed border-zinc-300 bg-white p-8">
                 <PackageSearch className="h-10 w-10 text-zinc-400 mx-auto mb-3" />
                 <h3 className="text-base font-semibold text-zinc-900">
                   No materials match your filters
                 </h3>
                 <p className="text-sm text-zinc-500 mt-1 max-w-sm mx-auto">
-                  Try adjusting your search query, clearing specific manufacturers, or broadening your price bounds.
+                  Try adjusting your search query, clearing specific
+                  manufacturers, or broadening your price bounds.
                 </p>
                 <Button
                   onClick={handleResetFilters}
@@ -374,4 +467,66 @@ function CatalogContent() {
       </main>
     </div>
   );
+}
+
+interface ProcessSemanticOptions {
+  matches: Product[];
+  manufacturers: string[];
+  minPrice: string;
+  maxPrice: string;
+  sortBy: ProductQueryParams["sortBy"];
+  currentPage: number;
+  pageSize: number;
+}
+
+function processSemanticResults({
+  matches,
+  manufacturers,
+  minPrice,
+  maxPrice,
+  sortBy,
+  currentPage,
+  pageSize,
+}: ProcessSemanticOptions) {
+  let filtered = matches;
+
+  if (manufacturers.length > 0) {
+    filtered = filtered.filter(
+      (p) => p.manufacturer && manufacturers.includes(p.manufacturer),
+    );
+  }
+
+  if (minPrice) {
+    filtered = filtered.filter((p) => p.price >= Number(minPrice));
+  }
+  if (maxPrice) {
+    filtered = filtered.filter((p) => p.price <= Number(maxPrice));
+  }
+
+  if (sortBy === "price_asc") {
+    filtered.sort((a, b) => a.price - b.price);
+  } else if (sortBy === "price_desc") {
+    filtered.sort((a, b) => b.price - a.price);
+  } else if (sortBy === "name_asc") {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortBy === "name_desc") {
+    filtered.sort((a, b) => b.name.localeCompare(a.name));
+  } else {
+    filtered.sort(
+      (a, b) => (b.similarityScore || 0) - (a.similarityScore || 0),
+    );
+  }
+
+  const total = filtered.length;
+  const totalPages = Math.ceil(total / pageSize) || 1;
+  const startIndex = (currentPage - 1) * pageSize;
+  const paginatedItems = filtered.slice(startIndex, startIndex + pageSize);
+
+  return { paginatedItems, total, totalPages };
+}
+
+function extractUniqueManufacturers(items: Product[]): string[] {
+  return Array.from(
+    new Set(items.map((p) => p.manufacturer).filter(Boolean) as string[]),
+  ).sort();
 }

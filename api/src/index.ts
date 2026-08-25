@@ -12,11 +12,12 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.set('trust proxy', 1);
+
 app.use(cors());
 app.use(express.json());
 app.use(apiRateLimiter);
 
-// Health check endpoint (always available)
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
@@ -26,9 +27,8 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Database availability guard for database-backed endpoints
 app.use((req, res, next) => {
-  if (req.path === '/health') return next();
+  if (req.path === '/health' || req.path === '/api/v1/core/health') return next();
   if (!AppDataSource.isInitialized) {
     return res.status(503).json({
       success: false,
@@ -39,9 +39,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Standard versioned API route mounting
 app.use('/api/v1/core', routes);
 app.use('/api/v1', routes);
+app.use('/', routes);
 
 app.use(errorHandler);
 
@@ -51,9 +51,7 @@ async function startServer() {
       await AppDataSource.initialize();
       console.log('[Database] Connected to PostgreSQL via TypeORM');
     } else {
-      console.warn(
-        '[Database] DATABASE_URL not set. Running without database connection.'
-      );
+      console.warn('[Database] DATABASE_URL not set. Running without database connection.');
     }
 
     app.listen(port, () => {
@@ -62,9 +60,7 @@ async function startServer() {
   } catch (error) {
     console.error('[Database] Connection failed:', error);
     app.listen(port, () => {
-      console.log(
-        `[Server] Core API Service listening on port ${port} (database offline)`
-      );
+      console.log(`[Server] Core API Service listening on port ${port} (database offline)`);
     });
   }
 }
