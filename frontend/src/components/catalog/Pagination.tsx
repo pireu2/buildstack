@@ -17,6 +17,39 @@ export function Pagination({
 }: PaginationProps) {
   if (totalPages <= 1) return null;
 
+  // Windowed pagination logic: e.g. [1, '...', 4, 5, 6, '...', 20]
+  const getPageNumbers = (): (number | string)[] => {
+    if (totalPages <= 7) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const pages: (number | string)[] = [];
+    const delta = 1;
+
+    pages.push(1);
+
+    if (currentPage > 3) {
+      pages.push('ellipsis-start');
+    }
+
+    const start = Math.max(2, currentPage - delta);
+    const end = Math.min(totalPages - 1, currentPage + delta);
+
+    for (let i = start; i <= end; i++) {
+      pages.push(i);
+    }
+
+    if (currentPage < totalPages - 2) {
+      pages.push('ellipsis-end');
+    }
+
+    pages.push(totalPages);
+
+    return pages;
+  };
+
+  const pages = getPageNumbers();
+
   return (
     <div className="flex items-center justify-center gap-2 mt-10 pt-6 border-t border-zinc-200">
       <Button
@@ -31,19 +64,34 @@ export function Pagination({
       </Button>
 
       <div className="flex items-center gap-1">
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-          <button
-            key={pageNum}
-            onClick={() => onPageChange(pageNum)}
-            className={`h-9 w-9 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer ${
-              pageNum === currentPage
-                ? 'bg-zinc-900 text-white font-semibold shadow-2xs'
-                : 'text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950'
-            }`}
-          >
-            {pageNum}
-          </button>
-        ))}
+        {pages.map((item, idx) => {
+          if (typeof item === 'string') {
+            return (
+              <span
+                key={`${item}-${idx}`}
+                className="h-9 w-7 flex items-center justify-center text-xs font-mono text-zinc-400 select-none"
+              >
+                …
+              </span>
+            );
+          }
+
+          const isCurrent = item === currentPage;
+
+          return (
+            <button
+              key={item}
+              onClick={() => onPageChange(item)}
+              className={`h-9 w-9 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer ${
+                isCurrent
+                  ? 'bg-zinc-900 text-white font-semibold shadow-2xs'
+                  : 'text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950'
+              }`}
+            >
+              {item}
+            </button>
+          );
+        })}
       </div>
 
       <Button

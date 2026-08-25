@@ -1,19 +1,33 @@
 import { AppDataSource } from '../data-source';
-import { Category } from '../entities';
+import { Category, Product } from '../entities';
 
 export class CategoriesService {
   private categoryRepo = AppDataSource.getRepository(Category);
+  private productRepo = AppDataSource.getRepository(Product);
 
   async getAllCategories() {
-    return await this.categoryRepo.find({
+    const categories = await this.categoryRepo.find({
       order: { name: 'ASC' },
     });
+
+    const categoriesWithCount = await Promise.all(
+      categories.map(async (cat) => {
+        const productCount = await this.productRepo.count({
+          where: { category: { id: cat.id } },
+        });
+        return {
+          ...cat,
+          productCount,
+        };
+      })
+    );
+
+    return categoriesWithCount;
   }
 
   async getCategoryBySlug(slug: string) {
     const category = await this.categoryRepo.findOne({
       where: { slug },
-      relations: { products: true },
     });
 
     if (!category) {
@@ -22,7 +36,14 @@ export class CategoriesService {
       throw error;
     }
 
-    return category;
+    const productCount = await this.productRepo.count({
+      where: { category: { id: category.id } },
+    });
+
+    return {
+      ...category,
+      productCount,
+    };
   }
 }
 

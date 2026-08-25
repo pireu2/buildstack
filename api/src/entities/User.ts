@@ -8,23 +8,41 @@ import {
 } from 'typeorm';
 import { Project } from './Project';
 
-@Entity('users')
+@Entity({ name: 'user', schema: 'neon_auth', synchronize: false })
 export class User {
-  @PrimaryColumn({ type: 'varchar', length: 255 })
+  @PrimaryColumn({ type: 'uuid' })
   id: string;
 
-  @Column({ type: 'varchar', length: 255, unique: true })
+  @Column({ type: 'text', nullable: true })
+  name?: string;
+
+  @Column({ type: 'text', unique: true })
   email: string;
 
-  @Column({ type: 'varchar', length: 255, nullable: true })
-  name?: string;
+  @Column({ name: 'emailVerified', type: 'boolean', default: false })
+  emailVerified: boolean;
+
+  @Column({ type: 'text', nullable: true })
+  image?: string;
+
+  @Column({ type: 'text', nullable: true })
+  role?: string;
+
+  @Column({ type: 'boolean', default: false })
+  banned: boolean;
+
+  @Column({ name: 'banReason', type: 'text', nullable: true })
+  banReason?: string;
+
+  @Column({ name: 'banExpires', type: 'timestamptz', nullable: true })
+  banExpires?: Date;
 
   @OneToMany(() => Project, (project) => project.user)
   projects: Project[];
 
-  @CreateDateColumn({ name: 'created_at' })
+  @CreateDateColumn({ name: 'createdAt', type: 'timestamptz' })
   createdAt: Date;
 
-  @UpdateDateColumn({ name: 'updated_at' })
+  @UpdateDateColumn({ name: 'updatedAt', type: 'timestamptz' })
   updatedAt: Date;
 }

@@ -56,6 +56,7 @@ export function CatalogHeader({
           {search && (
             <button
               type="button"
+              aria-label="Clear search"
               onClick={() => onSearchChange('')}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-600 cursor-pointer"
             >
