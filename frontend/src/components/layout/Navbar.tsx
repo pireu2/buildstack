@@ -1,20 +1,19 @@
-"use client";
+'use client';
 
-import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Layers, ArrowUpRight, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { authClient } from "@/lib/auth/client";
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Layers, User } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { authClient } from '@/lib/auth/client';
 
 export function Navbar() {
   const pathname = usePathname();
   const { data: session } = authClient.useSession();
 
   const navLinks = [
-    { href: "/catalog", label: "Catalog" },
-    { href: "/solutions", label: "Solution Architect" },
-    { href: "/projects", label: "Saved Projects" },
+    { href: '/catalog', label: 'Catalog' },
+    { href: '/projects', label: 'Saved Projects' },
   ];
 
   return (
@@ -43,8 +42,8 @@ export function Navbar() {
                   href={link.href}
                   className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                     isActive
-                      ? "text-foreground bg-secondary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/60"
+                      ? 'text-foreground bg-secondary'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/60'
                   }`}
                 >
                   {link.label}
@@ -59,11 +58,7 @@ export function Navbar() {
           {session?.user ? (
             <div className="flex items-center gap-3">
               <Link href="/projects">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-sm font-medium"
-                >
+                <Button variant="ghost" size="sm" className="text-sm font-medium">
                   My Projects
                 </Button>
               </Link>
@@ -95,15 +90,6 @@ export function Navbar() {
                   className="text-sm font-medium text-muted-foreground hover:text-foreground"
                 >
                   Sign in
-                </Button>
-              </Link>
-              <Link href="/solutions">
-                <Button
-                  size="sm"
-                  className="h-9 px-4 text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs"
-                >
-                  <span>Start Build</span>
-                  <ArrowUpRight className="h-4 w-4 ml-1 opacity-70" />
                 </Button>
               </Link>
             </div>
