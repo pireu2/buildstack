@@ -20,11 +20,14 @@ export class Project {
   @Column({ type: 'jsonb', default: {} })
   data: Record<string, any>;
 
+  @Column({ name: 'user_id', type: 'uuid', nullable: true })
+  userId?: string;
+
   @ManyToOne(() => User, (user) => user.projects, {
     onDelete: 'SET NULL',
     nullable: true,
   })
-  @JoinColumn({ name: 'user_id' })
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   user?: User;
 
   @CreateDateColumn({ name: 'created_at' })

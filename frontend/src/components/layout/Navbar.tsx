@@ -56,41 +56,31 @@ export function Navbar() {
         {/* Right Actions / Auth */}
         <div className="flex items-center gap-3">
           {session?.user ? (
-            <div className="flex items-center gap-3">
-              <Link href="/projects">
-                <Button variant="ghost" size="sm" className="text-sm font-medium">
-                  My Projects
-                </Button>
-              </Link>
-              <div className="flex items-center gap-2 pl-2 border-l border-border">
-                <div className="h-8 w-8 rounded-full bg-secondary border border-border flex items-center justify-center text-xs font-semibold text-foreground">
-                  {session.user.name?.[0]?.toUpperCase() || (
-                    <User className="h-4 w-4" />
-                  )}
-                </div>
-                <span className="text-sm font-medium text-foreground hidden sm:inline-block">
-                  {session.user.name || session.user.email}
-                </span>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => authClient.signOut()}
-                  className="text-xs h-8 ml-1"
-                >
-                  Sign out
-                </Button>
+            <div className="flex items-center gap-2.5">
+              <div className="h-8 w-8 rounded-full bg-secondary border border-border flex items-center justify-center text-xs font-semibold text-foreground">
+                {session.user.name?.[0]?.toUpperCase() || (
+                  <User className="h-4 w-4" />
+                )}
               </div>
+              <span className="text-sm font-medium text-foreground hidden sm:inline-block">
+                {session.user.name || session.user.email}
+              </span>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => authClient.signOut()}
+                className="text-xs h-8 ml-1 cursor-pointer"
+              >
+                Sign out
+              </Button>
             </div>
           ) : (
             <div className="flex items-center gap-2">
-              <Link href="/auth/sign-in">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-sm font-medium text-muted-foreground hover:text-foreground"
-                >
-                  Sign in
-                </Button>
+              <Link
+                href="/auth/sign-in"
+                className="inline-flex items-center justify-center h-8 px-3 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-colors"
+              >
+                Sign in
               </Link>
             </div>
           )}

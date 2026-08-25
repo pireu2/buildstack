@@ -1,7 +1,11 @@
 import { Router } from 'express';
 import { projectsController } from '../controllers/projects.controller';
+import { requireAuth } from '../middlewares/auth';
 
 const router = Router();
+
+// All project endpoints require authentication and are scoped to the authenticated user
+router.use(requireAuth);
 
 router.get('/', (req, res, next) => projectsController.getProjects(req, res, next));
 router.get('/:id', (req, res, next) => projectsController.getProjectById(req, res, next));

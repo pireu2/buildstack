@@ -51,10 +51,17 @@ export class ProductsService {
 
     // 3. Manufacturer Filter
     if (params.manufacturer) {
-      const manufacturers = Array.isArray(params.manufacturer)
-        ? params.manufacturer
-        : params.manufacturer.split(",").map((m) => m.trim());
-      where.manufacturer = In(manufacturers);
+      const manufacturers = (
+        Array.isArray(params.manufacturer)
+          ? params.manufacturer
+          : params.manufacturer.split(',')
+      )
+        .map((m) => m.trim())
+        .filter((m) => m.length > 0);
+
+      if (manufacturers.length > 0) {
+        where.manufacturer = In(manufacturers);
+      }
     }
 
     // 4. Price Filter

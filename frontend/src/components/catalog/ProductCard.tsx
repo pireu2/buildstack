@@ -104,7 +104,7 @@ export function ProductCard({ product }: ProductCardProps) {
   );
 }
 
-function extractSpecHighlights(data: Record<string, any> = []) {
+function extractSpecHighlights(data: Record<string, any> = {}) {
   const highlights: { label: string; icon?: React.ElementType }[] = [];
 
   if (

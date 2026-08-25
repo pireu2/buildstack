@@ -9,9 +9,6 @@ import {
   ArrowRight,
   ShieldCheck,
   FileText,
-  Sliders,
-  Check,
-  Building2,
   Box,
 } from 'lucide-react';
 

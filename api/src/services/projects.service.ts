@@ -4,7 +4,7 @@ import { FindOptionsWhere } from 'typeorm';
 
 export interface CreateProjectInput {
   title: string;
-  userId?: string;
+  userId: string;
   data?: Record<string, any>;
 }
 
@@ -17,20 +17,34 @@ export class ProjectsService {
   private projectRepo = AppDataSource.getRepository(Project);
   private userRepo = AppDataSource.getRepository(User);
 
-  async getProjects(userId?: string) {
-    const where: FindOptionsWhere<Project> = userId ? { user: { id: userId } } : {};
+  async getProjects(userId: string) {
+    const where: FindOptionsWhere<Project> = { user: { id: userId } };
 
     return await this.projectRepo.find({
       where,
-      relations: { user: true },
+      select: {
+        id: true,
+        title: true,
+        data: true,
+        userId: true,
+        createdAt: true,
+        updatedAt: true,
+      },
       order: { updatedAt: 'DESC' },
     });
   }
 
-  async getProjectById(id: string) {
+  async getProjectById(id: string, userId: string) {
     const project = await this.projectRepo.findOne({
-      where: { id },
-      relations: { user: true },
+      where: { id, user: { id: userId } },
+      select: {
+        id: true,
+        title: true,
+        data: true,
+        userId: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
 
     if (!project) {
@@ -45,20 +59,21 @@ export class ProjectsService {
   async createProject(input: CreateProjectInput) {
     let user: User | undefined;
     if (input.userId) {
-      user = await this.userRepo.findOne({ where: { id: input.userId } }) || undefined;
+      user = (await this.userRepo.findOne({ where: { id: input.userId } })) || undefined;
     }
 
     const project = this.projectRepo.create({
-      title: input.title || 'Untitled Build Project',
+      title: input.title,
       data: input.data || {},
       user,
+      userId: input.userId,
     });
 
     return await this.projectRepo.save(project);
   }
 
-  async updateProject(id: string, input: UpdateProjectInput) {
-    const project = await this.getProjectById(id);
+  async updateProject(id: string, userId: string, input: UpdateProjectInput) {
+    const project = await this.getProjectById(id, userId);
 
     if (input.title !== undefined) {
       project.title = input.title;
@@ -74,8 +89,8 @@ export class ProjectsService {
     return await this.projectRepo.save(project);
   }
 
-  async deleteProject(id: string) {
-    const project = await this.getProjectById(id);
+  async deleteProject(id: string, userId: string) {
+    const project = await this.getProjectById(id, userId);
     await this.projectRepo.remove(project);
     return { success: true, message: `Project ${id} deleted successfully.` };
   }
