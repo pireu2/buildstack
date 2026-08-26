@@ -174,8 +174,8 @@ export function HeroSection() {
     router.push(`/solutions?${queryParams.toString()}`);
   };
 
-  const scrollToCategories = () => {
-    const el = document.getElementById('categories-section');
+  const scrollToFeatures = () => {
+    const el = document.getElementById('features-section');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
@@ -487,10 +487,10 @@ export function HeroSection() {
       <div className="w-full flex justify-center py-2 z-10">
         <button
           type="button"
-          onClick={scrollToCategories}
+          onClick={scrollToFeatures}
           className="group flex flex-col items-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-900 transition-colors cursor-pointer"
         >
-          <span>Explore certified materials catalog</span>
+          <span>Explore platform features</span>
           <ChevronDown className="h-4 w-4 animate-bounce text-amber-600 group-hover:text-amber-700 transition-colors" />
         </button>
       </div>

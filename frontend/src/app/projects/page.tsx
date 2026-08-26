@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Navbar } from '@/components/layout/Navbar';
+import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { authClient } from '@/lib/auth/client';
 import { fetchUserProjects, deleteProject } from '@/lib/api/projects';
@@ -310,6 +311,8 @@ export default function ProjectsPage() {
           </div>
         )}
       </main>
+
+      <Footer />
     </div>
   );
 }
