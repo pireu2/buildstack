@@ -14,14 +14,20 @@ class Settings(BaseSettings):
 
     AI_BASE_URL: str = os.getenv("AI_BASE_URL", "http://localhost:11434/v1")
     AI_API_KEY: str = os.getenv("AI_API_KEY", "ollama")
-    LLM_MODEL: str = os.getenv("LLM_MODEL", "mistral:latest")
+    LLM_MODEL: str = os.getenv("LLM_MODEL", "qwen2.5:7b")
     EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
     EMBEDDING_DIM: int = int(os.getenv("EMBEDDING_DIM", "768"))
     VECTOR_SCHEMA: str = os.getenv("VECTOR_SCHEMA", "ai")
 
-    # Search, Rate Limiting & HTTP Constants
+    # Rate Limiting & HTTP Constants
     SEARCH_RATE_LIMIT_MAX_REQUESTS: int = int(os.getenv("SEARCH_RATE_LIMIT_MAX_REQUESTS", "40"))
     SEARCH_RATE_LIMIT_WINDOW_SECONDS: int = int(os.getenv("SEARCH_RATE_LIMIT_WINDOW_SECONDS", "60"))
+    
+    # Tiered 24h Chat Rate Limits: 100/24h for authenticated, 10/24h for anonymous
+    CHAT_AUTH_RATE_LIMIT_MAX_REQUESTS: int = int(os.getenv("CHAT_AUTH_RATE_LIMIT_MAX_REQUESTS", "100"))
+    CHAT_ANON_RATE_LIMIT_MAX_REQUESTS: int = int(os.getenv("CHAT_ANON_RATE_LIMIT_MAX_REQUESTS", "10"))
+    CHAT_RATE_LIMIT_WINDOW_SECONDS: int = int(os.getenv("CHAT_RATE_LIMIT_WINDOW_SECONDS", "86400"))
+
     DEFAULT_SEARCH_LIMIT: int = 20
     MAX_SEARCH_LIMIT: int = 100
     MIN_SEARCH_QUERY_LENGTH: int = 2

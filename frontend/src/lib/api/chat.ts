@@ -1,30 +1,79 @@
-import { ChatMessage, StreamEvent } from '@/types/chat';
+export type StreamEvent = 
+  | { type: 'token'; content: string }
+  | { type: 'tool_start'; tool: string }
+  | { type: 'tool_end'; tool: string }
+  | { type: 'done' }
+  | { type: 'error'; content: string };
 
-const AI_SERVICE_URL =
-  process.env.NEXT_PUBLIC_AI_URL || 'http://localhost:8000/api/v1/ai';
+export interface ChatHistoryMessage {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export class ChatApiError extends Error {
+  statusCode: number;
+  detail?: string;
+
+  constructor(message: string, statusCode: number, detail?: string) {
+    super(message);
+    this.name = 'ChatApiError';
+    this.statusCode = statusCode;
+    this.detail = detail;
+  }
+}
+
+const AI_SERVICE_URL = process.env.NEXT_PUBLIC_AI_URL || 'http://localhost:8000/api/v1/ai';
 
 export async function streamChat(
-  messages: { role: string; content: string }[],
+  prompt: string,
+  context: any = null,
+  messages: ChatHistoryMessage[] = [],
   onEvent: (event: StreamEvent) => void,
+  userId?: string,
   signal?: AbortSignal
 ): Promise<void> {
-  const response = await fetch(`${AI_SERVICE_URL}/chat`, {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+
+  if (userId) {
+    headers['X-User-Id'] = userId;
+  }
+
+  const response = await fetch(`${AI_SERVICE_URL}/chat/stream`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ messages }),
+    headers,
+    credentials: 'include',
+    body: JSON.stringify({ prompt, context, messages, user_id: userId }),
     signal,
   });
 
   if (!response.ok) {
-    throw new Error(`AI service responded with status: ${response.statusText}`);
+    let errorDetail = '';
+    try {
+      const errorJson = await response.json();
+      errorDetail = errorJson.detail || errorJson.message || '';
+    } catch {
+      errorDetail = await response.text().catch(() => '');
+    }
+
+    if (response.status === 429) {
+      throw new ChatApiError(
+        errorDetail || 'You have reached your daily message limit.',
+        429,
+        errorDetail
+      );
+    }
+
+    throw new ChatApiError(
+      errorDetail || `AI service error (${response.status})`,
+      response.status,
+      errorDetail
+    );
   }
 
   const reader = response.body?.getReader();
-  if (!reader) {
-    throw new Error('Response body stream reader could not be established.');
-  }
+  if (!reader) throw new Error('Response body missing reader');
 
   const decoder = new TextDecoder();
   let buffer = '';
@@ -39,13 +88,16 @@ export async function streamChat(
 
     for (const line of lines) {
       const trimmed = line.trim();
-      if (!trimmed) continue;
+      if (!trimmed.startsWith('data: ')) continue;
+      
+      const dataStr = trimmed.slice(6).trim();
+      if (!dataStr) continue;
 
       try {
-        const event: StreamEvent = JSON.parse(trimmed);
+        const event: StreamEvent = JSON.parse(dataStr);
         onEvent(event);
       } catch (e) {
-        console.warn('[ChatStream] Failed to parse SSE event chunk:', trimmed);
+        console.warn('Failed to parse SSE event chunk:', dataStr);
       }
     }
   }
