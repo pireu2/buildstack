@@ -18,10 +18,11 @@ def format_product_specs(data: dict[str, Any]) -> str:
 def chunk_product(product: dict[str, Any]) -> dict[str, Any]:
     """
     Transforms a catalog product JSON into a rich semantic chunk for vector embedding.
-    Preserves all fields including description, image URL, category, and technical specs.
+    Preserves all fields including description, image URL, category, slug, and technical specs.
     """
     sku = product.get("sku", "")
     name = product.get("name", "")
+    slug = product.get("slug", "")
     category = product.get("category", {})
     category_name = category.get("name", "Building Materials") if isinstance(category, dict) else product.get("categoryName", "Building Materials")
     category_slug = category.get("slug", "general") if isinstance(category, dict) else product.get("categorySlug", "general")
@@ -34,7 +35,9 @@ def chunk_product(product: dict[str, Any]) -> dict[str, Any]:
 
     specs_text = format_product_specs(data)
 
-    content = f"""Product: {name}
+    content = f"""Product: [{name}](/catalog/{slug})
+Slug: {slug}
+Catalog Link: [{name}](/catalog/{slug})
 SKU: {sku}
 Category: {category_name} ({category_slug})
 Manufacturer: {manufacturer}
@@ -55,7 +58,8 @@ Technical Specifications & Performance:
         "metadata": {
             "sku": sku,
             "name": name,
-            "slug": product.get("slug"),
+            "slug": slug,
+            "catalog_link": f"[{name}](/catalog/{slug})",
             "category_name": category_name,
             "category_slug": category_slug,
             "manufacturer": manufacturer,

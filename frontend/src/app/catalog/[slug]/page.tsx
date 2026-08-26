@@ -10,8 +10,8 @@ import {
   ArrowRight,
   FileText,
   Box,
-  MessageSquare,
 } from 'lucide-react';
+import { ProductActions } from '@/components/catalog/ProductActions';
 
 interface ProductPageProps {
   params: Promise<{
@@ -137,32 +137,14 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5">
-                  <Link
-                    href={`/solutions?query=${encodeURIComponent(`Tell me all technical details and installation constraints for ${product.name}`)}`}
-                  >
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="h-10 px-3.5 border-zinc-300 bg-white hover:bg-zinc-100 text-zinc-800 text-xs font-medium rounded-lg flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <MessageSquare className="h-4 w-4 text-amber-600" />
-                      <span>Ask Copilot</span>
-                    </Button>
-                  </Link>
-
-                  <Link
-                    href={`/solutions?query=${encodeURIComponent(`Build assembly using ${product.name}`)}`}
-                  >
-                    <Button
-                      size="sm"
-                      className="h-10 px-4 bg-zinc-900 hover:bg-zinc-800 text-zinc-50 text-xs font-medium rounded-lg shadow-xs flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Generate Plan</span>
-                      <ArrowRight className="h-3.5 w-3.5 text-amber-400" />
-                    </Button>
-                  </Link>
-                </div>
+                <ProductActions 
+                  productContext={{ 
+                    name: product.name, 
+                    sku: product.sku, 
+                    slug: product.slug,
+                    category: product.category?.name 
+                  }} 
+                />
               </div>
 
               {/* Physical & Engineering Specifications (Single Column Table List) */}
