@@ -25,13 +25,13 @@ class RateLimiter:
         if user_id:
             key = f"user:{user_id}"
             limit = self.auth_limit
-            msg = self.message or f"Daily limit of {limit} messages per 24 hours reached."
+            msg = self.message or f"Daily limit of {limit} requests per 24 hours reached."
         else:
             forwarded = request.headers.get("X-Forwarded-For", "")
             client_ip = forwarded.split(",")[0].strip() if forwarded else (request.client.host if request.client else "unknown")
             key = f"ip:{client_ip}"
             limit = self.anon_limit
-            msg = self.message or f"Guest limit of {limit} messages per 24 hours reached. Sign in for {self.auth_limit} messages per day."
+            msg = self.message or f"Guest limit of {limit} requests per 24 hours reached. Sign in for {self.auth_limit} requests per day."
 
         now = time.time()
         cutoff = now - self.window_seconds
@@ -59,4 +59,17 @@ chat_rate_limiter = RateLimiter(
     anon_limit=settings.CHAT_ANON_RATE_LIMIT_MAX_REQUESTS,
     auth_limit=settings.CHAT_AUTH_RATE_LIMIT_MAX_REQUESTS,
     window_seconds=settings.CHAT_RATE_LIMIT_WINDOW_SECONDS,
+)
+
+questions_rate_limiter = RateLimiter(
+    anon_limit=settings.QUESTIONS_RATE_LIMIT_MAX_REQUESTS,
+    window_seconds=settings.QUESTIONS_RATE_LIMIT_WINDOW_SECONDS,
+    message="Too many question requests. Please slow down.",
+)
+
+solutions_generate_rate_limiter = RateLimiter(
+    anon_limit=settings.SOLUTIONS_GENERATE_ANON_RATE_LIMIT_MAX_REQUESTS,
+    auth_limit=settings.SOLUTIONS_GENERATE_AUTH_RATE_LIMIT_MAX_REQUESTS,
+    window_seconds=settings.SOLUTIONS_GENERATE_RATE_LIMIT_WINDOW_SECONDS,
+    message=f"Solution plan generation limit reached ({settings.SOLUTIONS_GENERATE_ANON_RATE_LIMIT_MAX_REQUESTS} for guests, {settings.SOLUTIONS_GENERATE_AUTH_RATE_LIMIT_MAX_REQUESTS} for signed-in users per 24 hours). Sign in for more generations or try again later.",
 )

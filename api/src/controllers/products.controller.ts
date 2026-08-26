@@ -32,11 +32,11 @@ export class ProductsController {
       let parsedLimit: number | undefined;
       if (limit !== undefined) {
         const num = Number(limit);
-        if (!Number.isFinite(num) || num < 1 || num > 100) {
+        if (!Number.isFinite(num) || num < 1 || num > 500) {
           return res.status(400).json({
             success: false,
             error: 'invalid_query',
-            message: 'Limit parameter must be an integer between 1 and 100.',
+            message: 'Limit parameter must be an integer between 1 and 500.',
           });
         }
         parsedLimit = Math.floor(num);

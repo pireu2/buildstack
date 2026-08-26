@@ -26,7 +26,7 @@ export class ProductsService {
 
   async getProducts(params: ProductQueryParams) {
     const page = Math.max(1, Number(params.page) || 1);
-    const limit = Math.min(50, Math.max(1, Number(params.limit) || 12));
+    const limit = Math.min(500, Math.max(1, Number(params.limit) || 12));
     const skip = (page - 1) * limit;
 
     const where: FindOptionsWhere<Product> = {};

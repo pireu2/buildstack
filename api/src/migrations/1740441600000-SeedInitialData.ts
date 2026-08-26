@@ -6,58 +6,43 @@ export class SeedInitialData1740441600000 implements MigrationInterface {
   name = 'SeedInitialData1740441600000';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
-    console.log('[Migration] Seeding initial categories and products...');
-
     const categoryRepo = queryRunner.manager.getRepository(Category);
     const productRepo = queryRunner.manager.getRepository(Product);
 
-    const categoryMap = new Map<string, Category>();
+    console.log('[Migration] Seeding categories...');
+    const categoryEntities = seedData.categories.map((c) => ({
+      name: c.name,
+      slug: c.slug,
+      description: c.description,
+      icon: c.icon,
+    }));
+    await categoryRepo.upsert(categoryEntities as any, ['slug']);
 
-    for (const catData of seedData.categories) {
-      const category = categoryRepo.create({
-        name: catData.name,
-        slug: catData.slug,
-        description: catData.description,
-        icon: catData.icon,
-      });
-      const savedCategory = await categoryRepo.save(category);
-      categoryMap.set(catData.slug, savedCategory);
-    }
+    const categories = await categoryRepo.find();
+    const categoryMap = new Map(categories.map((c) => [c.slug, c]));
 
-    const productsToInsert: Product[] = [];
+    console.log('[Migration] Seeding products...');
+    const productEntities = seedData.products
+      .filter((p) => categoryMap.has(p.categorySlug))
+      .map((p) => ({
+        sku: p.sku,
+        name: p.name,
+        slug: p.slug,
+        manufacturer: p.manufacturer,
+        description: p.description,
+        price: p.price,
+        unit: p.unit,
+        imageUrl: p.imageUrl,
+        data: p.data,
+        category: categoryMap.get(p.categorySlug)!,
+      }));
 
-    for (const prodData of seedData.products) {
-      const category = categoryMap.get(prodData.categorySlug);
-      if (!category) {
-        continue;
-      }
-
-      const product = productRepo.create({
-        sku: prodData.sku,
-        name: prodData.name,
-        slug: prodData.slug,
-        manufacturer: prodData.manufacturer,
-        description: prodData.description,
-        price: prodData.price,
-        unit: prodData.unit,
-        imageUrl: prodData.imageUrl,
-        data: prodData.data,
-        category: category,
-      });
-      productsToInsert.push(product);
-    }
-
-    await productRepo.save(productsToInsert);
-    console.log(`[Migration] Successfully seeded ${categoryMap.size} categories and ${productsToInsert.length} products.`);
+    await productRepo.upsert(productEntities as any, ['sku']);
+    console.log(`[Migration] Successfully seeded ${categories.length} categories and ${productEntities.length} products.`);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    console.log('[Migration] Reverting initial seed data...');
-    const productRepo = queryRunner.manager.getRepository(Product);
-    const categoryRepo = queryRunner.manager.getRepository(Category);
-
-    await productRepo.clear();
-    await categoryRepo.clear();
-    console.log('[Migration] Initial seed data deleted.');
+    await queryRunner.manager.getRepository(Product).clear();
+    await queryRunner.manager.getRepository(Category).clear();
   }
 }
