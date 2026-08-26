@@ -99,6 +99,7 @@ export async function streamSolutionsChat({
     query?: string;
     dimensions?: any;
     options?: SolutionOption[];
+    selected_option?: SolutionOption;
   };
   messages: Array<{ role: 'user' | 'assistant'; content: string }>;
   onChunk: (token: string) => void;

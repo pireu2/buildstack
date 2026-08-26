@@ -33,37 +33,37 @@ export function OptionCard({
 
   return (
     <div
-      className={`relative rounded-2xl border transition-all duration-200 p-4 flex-1 min-h-0 flex flex-col justify-between ${
+      className={`relative rounded-2xl border transition-all duration-200 p-4 lg:flex-1 lg:min-h-0 flex-none h-auto shrink-0 flex flex-col justify-between ${
         isSelected
           ? 'border-amber-500 ring-2 ring-amber-500/20 bg-white shadow-sm'
           : 'border-zinc-200 bg-white shadow-2xs hover:border-zinc-300'
       }`}
     >
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-5 h-full min-h-0 items-stretch">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-5 lg:h-full lg:min-h-0 items-stretch">
         {/* 1. Left Section (4 cols / ~33%): Info, Highlights, and Cost Estimate */}
-        <div className="md:col-span-4 flex flex-col justify-between h-full min-h-0 space-y-2 pr-1">
+        <div className="md:col-span-4 flex flex-col justify-between lg:h-full lg:min-h-0 space-y-3 pr-1">
           <div className="space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">
               {tierName}
             </span>
-            <h3 className="text-base font-bold text-zinc-950 leading-snug line-clamp-1">
+            <h3 className="text-base font-bold text-zinc-950 leading-snug">
               {option.title}
             </h3>
-            <p className="text-xs text-zinc-600 leading-relaxed font-normal line-clamp-2">
+            <p className="text-xs text-zinc-600 leading-relaxed font-normal">
               {option.tagline || option.description}
             </p>
           </div>
 
           {/* Highlights */}
           {option.key_benefits && option.key_benefits.length > 0 && (
-            <ul className="space-y-1 pt-1.5 border-t border-zinc-100">
+            <ul className="space-y-1 pt-2 border-t border-zinc-100">
               {option.key_benefits.slice(0, 2).map((benefit, idx) => (
                 <li
                   key={idx}
                   className="text-xs text-zinc-600 flex items-start gap-1.5 leading-tight"
                 >
                   <Check className="h-3.5 w-3.5 text-amber-600 shrink-0 mt-0.5" />
-                  <span className="line-clamp-1">{benefit}</span>
+                  <span>{benefit}</span>
                 </li>
               ))}
             </ul>
@@ -87,9 +87,9 @@ export function OptionCard({
         </div>
 
         {/* 2. Right Section (8 cols / ~67%): Wide/Long Materials Stacked One Under The Other + Bottom-Right Select Button */}
-        <div className="md:col-span-8 border-t md:border-t-0 md:border-l border-zinc-100 md:pl-5 pt-2 md:pt-0 flex flex-col justify-between h-full min-h-0">
+        <div className="md:col-span-8 border-t md:border-t-0 md:border-l border-zinc-100 md:pl-5 pt-3 md:pt-0 flex flex-col justify-between lg:h-full lg:min-h-0 space-y-3">
           {/* Header */}
-          <div className="flex items-center justify-between mb-2 shrink-0">
+          <div className="flex items-center justify-between shrink-0">
             <div className="flex items-center gap-1.5">
               <Layers className="h-3.5 w-3.5 text-amber-600 shrink-0" />
               <span className="text-xs font-bold text-zinc-900 uppercase tracking-wider">
@@ -102,7 +102,7 @@ export function OptionCard({
           </div>
 
           {/* Vertical Stack of Long Material Items */}
-          <div className="flex flex-col gap-1.5 flex-1 min-h-0 overflow-y-auto pr-1">
+          <div className="flex flex-col gap-1.5 lg:flex-1 lg:min-h-0 lg:overflow-y-auto pr-1">
             {option.products?.map((prod, idx) => (
               <div
                 key={idx}
@@ -133,7 +133,7 @@ export function OptionCard({
           </div>
 
           {/* Bottom Right: Select Solution Button */}
-          <div className="flex justify-end pt-2 shrink-0">
+          <div className="flex justify-end pt-1 shrink-0">
             <Button
               onClick={() => onSelect?.(option)}
               className={`h-8 px-4 text-xs font-semibold rounded-xl transition-all cursor-pointer flex items-center gap-1.5 ${

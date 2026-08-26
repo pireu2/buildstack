@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
   ArrowLeft,
@@ -9,6 +9,7 @@ import {
   Loader2,
   RefreshCw,
   AlertCircle,
+  Lock,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -17,9 +18,13 @@ import {
 } from '@/lib/api/solutions';
 import { OptionCard } from '@/components/solutions/OptionCard';
 import { SolutionsChat } from '@/components/solutions/SolutionsChat';
+import { authClient } from '@/lib/auth/client';
+import { createProject } from '@/lib/api/projects';
 
 function SolutionsContent() {
+  const router = useRouter();
   const searchParams = useSearchParams();
+  const { data: session } = authClient.useSession();
 
   const query = searchParams.get('query') || 'Project Solutions';
   const budget = searchParams.get('budget') || 'mid';
@@ -28,9 +33,13 @@ function SolutionsContent() {
   const moisture = searchParams.get('moisture') || 'dry';
 
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<string | null>(null);
   const [plansData, setPlansData] = useState<GeneratePlansResponse | null>(null);
   const [selectedOptionId, setSelectedOptionId] = useState<string>('balanced');
+  const [intakeAnswers, setIntakeAnswers] = useState<Array<{ question: string; answer: string }>>([]);
+  const [mobileTab, setMobileTab] = useState<'solutions' | 'chat'>('solutions');
 
   const fetchPlans = async () => {
     setIsLoading(true);
@@ -48,6 +57,7 @@ function SolutionsContent() {
     } catch (err) {
       console.warn('Session storage read warning:', err);
     }
+    setIntakeAnswers(answers);
 
     const payload = {
       prompt: query,
@@ -74,6 +84,54 @@ function SolutionsContent() {
   useEffect(() => {
     fetchPlans();
   }, [query]);
+
+  const handleProceedWithPlan = async () => {
+    if (!session?.user || !plansData?.options || isSaving) return;
+
+    const selectedOption =
+      plansData.options.find((o) => o.id === selectedOptionId) ||
+      plansData.options[0];
+
+    setIsSaving(true);
+    setSaveError(null);
+
+    const dimensions = plansData.dimensions || {
+      length_m: lengthM,
+      height_m: heightM,
+      area_m2: parseFloat((lengthM * heightM).toFixed(1)),
+    };
+
+    const initialGreeting = `I am your Solution Architect for the **${selectedOption.title}**. You can ask me to explain installation procedures, verify DIN/EN compliance, or calculate component and fastener quantities.`;
+
+    try {
+      const projectPayload = {
+        title: query,
+        data: {
+          prompt: query,
+          dimensions,
+          budget,
+          moisture_level: moisture,
+          intake_answers: intakeAnswers,
+          selected_option: selectedOption,
+          messages: [
+            {
+              id: 'initial',
+              role: 'assistant' as const,
+              content: initialGreeting,
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        },
+      };
+
+      const newProject = await createProject(projectPayload, session.user.id);
+      router.push(`/projects/${newProject.id}`);
+    } catch (err: any) {
+      console.error('[Solutions] Error saving project:', err);
+      setSaveError(err.message || 'Failed to save project. Please try again.');
+      setIsSaving(false);
+    }
+  };
 
   const areaM2 = (lengthM * heightM).toFixed(1);
 
@@ -105,34 +163,89 @@ function SolutionsContent() {
             <p className="text-xs text-zinc-500 font-normal mt-0.5">
               Area: <strong className="font-semibold text-zinc-800">{areaM2} m²</strong> ({lengthM}m × {heightM}m) • Budget Tier: <span className="capitalize font-medium text-zinc-700">{budget}</span> • Moisture Condition: <span className="capitalize font-medium text-zinc-700">{moisture}</span>
             </p>
+            {saveError && (
+              <p className="text-xs text-red-600 font-medium mt-1">
+                {saveError}
+              </p>
+            )}
           </div>
 
-          <Button
-            disabled={isLoading || !selectedOptionId}
-            onClick={() => {
-              const selectedOption = plansData?.options?.find((o) => o.id === selectedOptionId);
-              if (selectedOption) {
-                sessionStorage.setItem('buildstack_selected_solution', JSON.stringify({
-                  query,
-                  dimensions: plansData?.dimensions,
-                  selectedOption,
-                }));
-                // Proceed to catalog with selected items or project summary
-                window.location.href = `/catalog?category=${selectedOption.products?.[0]?.category || 'drywall-systems'}`;
-              }
-            }}
-            className="h-9 px-4 text-xs font-semibold rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 shadow-xs cursor-pointer flex items-center gap-1.5 shrink-0 disabled:opacity-50 transition-all"
-          >
-            <span>Proceed with Plan</span>
-            <ArrowRight className="h-3.5 w-3.5" />
-          </Button>
+          {/* Mobile Tab Switcher (< 1024px) */}
+          <div className="lg:hidden flex items-center bg-zinc-200/80 p-1 rounded-xl shrink-0 self-start sm:self-auto">
+            <button
+              type="button"
+              onClick={() => setMobileTab('solutions')}
+              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                mobileTab === 'solutions'
+                  ? 'bg-white text-zinc-950 shadow-xs'
+                  : 'text-zinc-600'
+              }`}
+            >
+              Solutions (3)
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileTab('chat')}
+              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
+                mobileTab === 'chat'
+                  ? 'bg-white text-zinc-950 shadow-xs'
+                  : 'text-zinc-600'
+              }`}
+            >
+              Architect Chat
+            </button>
+          </div>
+
+          {/* Right Action: Proceed with Plan (if logged in) or Sign In Required (if guest) */}
+          <div className="flex items-center gap-2">
+            {session?.user ? (
+              <Button
+                disabled={isLoading || !selectedOptionId || isSaving}
+                onClick={handleProceedWithPlan}
+                className="h-9 px-4 text-xs font-semibold rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 shadow-xs cursor-pointer flex items-center gap-1.5 shrink-0 disabled:opacity-50 transition-all"
+              >
+                {isSaving ? (
+                  <>
+                    <Loader2 className="h-3.5 w-3.5 animate-spin text-amber-500" />
+                    <span>Saving Project...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Proceed with Plan</span>
+                    <ArrowRight className="h-3.5 w-3.5" />
+                  </>
+                )}
+              </Button>
+            ) : (
+              <div className="flex items-center gap-2">
+                <div
+                  title="You must be signed in to save this project and enter the single plan workspace"
+                  className="hidden sm:flex items-center gap-1.5 text-xs text-zinc-500 bg-zinc-100/90 px-3 py-1.5 rounded-xl border border-zinc-200"
+                >
+                  <Lock className="h-3.5 w-3.5 text-zinc-400" />
+                  <span>Sign in to save project</span>
+                </div>
+                <Link
+                  href={`/auth/sign-in`}
+                  className="h-9 px-3.5 text-xs font-semibold rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 shadow-xs flex items-center gap-1.5 transition-all"
+                >
+                  <span>Sign In to Proceed</span>
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* 3. Skeleton Loading State (Split View) */}
         {isLoading && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 flex-1 min-h-0 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 flex-1 min-h-0 w-full overflow-hidden">
             {/* Left: 3 Shimmer Option Rows */}
-            <div className="flex flex-col gap-2.5 h-full min-h-0">
+            <div
+              className={`flex-col gap-2.5 h-full min-h-0 ${
+                mobileTab === 'solutions' ? 'flex' : 'hidden lg:flex'
+              }`}
+            >
               {[1, 2, 3].map((n) => (
                 <div
                   key={n}
@@ -159,7 +272,11 @@ function SolutionsContent() {
             </div>
 
             {/* Right: Shimmer Chat Box */}
-            <div className="h-full min-h-0 bg-white rounded-2xl border border-zinc-200 p-5 flex flex-col justify-between animate-pulse shadow-2xs">
+            <div
+              className={`h-full min-h-0 bg-white rounded-2xl border border-zinc-200 p-5 flex-col justify-between animate-pulse shadow-2xs ${
+                mobileTab === 'chat' ? 'flex' : 'hidden lg:flex'
+              }`}
+            >
               <div className="space-y-2 border-b border-zinc-100 pb-4">
                 <div className="h-4 bg-zinc-200 rounded w-48" />
                 <div className="h-3 bg-zinc-100 rounded w-72" />
@@ -213,9 +330,13 @@ function SolutionsContent() {
 
         {/* 5. Full-Screen Split Layout: Left 50% = 3 Full-Height Option Rows, Right 50% = Full-Height Chat */}
         {!isLoading && plansData && plansData.options && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 flex-1 min-h-0 w-full">
-            {/* Left Side (50%): 3 Option Rows dividing full vertical height equally */}
-            <div className="flex flex-col gap-2.5 h-full min-h-0 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3.5 flex-1 min-h-0 w-full overflow-hidden">
+            {/* Left Side (50% on desktop, active tab on mobile): 3 Option Rows */}
+            <div
+              className={`flex-col gap-3.5 h-full min-h-0 overflow-y-auto lg:overflow-hidden pb-6 lg:pb-0 pr-0.5 ${
+                mobileTab === 'solutions' ? 'flex' : 'hidden lg:flex'
+              }`}
+            >
               {plansData.options.map((option) => (
                 <OptionCard
                   key={option.id}
@@ -227,8 +348,12 @@ function SolutionsContent() {
               ))}
             </div>
 
-            {/* Right Side (50%): Full-Height Chat Docked to Screen */}
-            <div className="h-full min-h-0 overflow-hidden">
+            {/* Right Side (50% on desktop, active tab on mobile): Full-Height Chat */}
+            <div
+              className={`h-full min-h-0 overflow-hidden ${
+                mobileTab === 'chat' ? 'block' : 'hidden lg:block'
+              }`}
+            >
               <SolutionsChat
                 query={query}
                 dimensions={plansData.dimensions}
