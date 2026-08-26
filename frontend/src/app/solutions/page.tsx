@@ -10,6 +10,7 @@ import {
   RefreshCw,
   AlertCircle,
   Lock,
+  Clock,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -291,39 +292,60 @@ function SolutionsContent() {
           </div>
         )}
 
-        {/* 4. Error State */}
+        {/* 4. Error / Rate Limit State (Clean & Minimal without card background) */}
         {!isLoading && error && (
-          <div className="flex-1 flex flex-col items-center justify-center max-w-md mx-auto text-center space-y-4 p-6 bg-white rounded-2xl border border-zinc-200 shadow-sm my-auto">
-            <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600">
-              <AlertCircle className="h-6 w-6" />
+          <div className="flex-1 flex flex-col items-center justify-center max-w-md mx-auto text-center px-4 my-auto space-y-4">
+            <div className="h-12 w-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-600 shadow-2xs">
+              <Clock className="h-6 w-6" />
             </div>
-            <div className="space-y-1">
-              <h3 className="text-base font-bold text-zinc-950 font-heading">
-                {error.includes('limit') ? 'Generation Limit Reached' : 'Unable to Generate Plans'}
+
+            <div className="space-y-1.5">
+              <h3 className="text-lg font-bold text-zinc-950 font-heading">
+                {error.toLowerCase().includes('limit') || error.toLowerCase().includes('429')
+                  ? 'Daily Plan Generation Limit Reached'
+                  : 'Unable to Generate Plans'}
               </h3>
-              <p className="text-xs text-zinc-600 leading-relaxed max-w-sm">
-                {error}
+              <p className="text-xs text-zinc-600 leading-relaxed max-w-sm mx-auto">
+                {error.toLowerCase().includes('limit') || error.toLowerCase().includes('429')
+                  ? session?.user
+                    ? 'You have reached your daily quota of 10 solution plan generations. Your limit will reset in 24 hours.'
+                    : 'Guest access is limited to 1 plan generation per day. Sign in or create a free account to generate up to 10 solutions per day.'
+                  : error}
               </p>
             </div>
 
-            <div className="flex items-center gap-2 pt-1">
-              {error.includes('Sign in') && (
+            <div className="flex items-center justify-center gap-2.5 pt-1">
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-1.5 h-9 px-3.5 text-xs font-semibold rounded-xl bg-white text-zinc-800 border border-zinc-200 hover:bg-zinc-50 transition-colors shadow-2xs"
+              >
+                <ArrowLeft className="h-3.5 w-3.5" />
+                <span>Back to Intake</span>
+              </Link>
+
+              {!session?.user && (error.toLowerCase().includes('limit') || error.toLowerCase().includes('429')) ? (
                 <Link
                   href="/auth/sign-in"
                   className="inline-flex items-center justify-center h-9 px-4 text-xs font-semibold rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 transition-colors shadow-2xs"
                 >
-                  Sign In for 10 Plans/Day
+                  <span>Sign In for 10 Plans/Day</span>
                 </Link>
+              ) : session?.user && (error.toLowerCase().includes('limit') || error.toLowerCase().includes('429')) ? (
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center h-9 px-4 text-xs font-semibold rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 transition-colors shadow-2xs"
+                >
+                  <span>View Saved Projects</span>
+                </Link>
+              ) : (
+                <Button
+                  onClick={fetchPlans}
+                  className="h-9 px-4 text-xs font-semibold rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 transition-colors shadow-2xs cursor-pointer flex items-center gap-1.5"
+                >
+                  <RefreshCw className="h-3.5 w-3.5" />
+                  <span>Retry</span>
+                </Button>
               )}
-              <Button
-                onClick={fetchPlans}
-                size="sm"
-                variant={error.includes('Sign in') ? 'outline' : 'default'}
-                className="h-9 px-4 text-xs font-semibold rounded-xl cursor-pointer"
-              >
-                <RefreshCw className="h-3.5 w-3.5 mr-1.5" />
-                <span>Retry</span>
-              </Button>
             </div>
           </div>
         )}
