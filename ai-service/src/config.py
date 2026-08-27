@@ -14,7 +14,7 @@ class Settings(BaseSettings):
 
     AI_BASE_URL: str = os.getenv("AI_BASE_URL", "http://localhost:11434/v1")
     AI_API_KEY: str = os.getenv("AI_API_KEY", "ollama")
-    LLM_MODEL: str = os.getenv("LLM_MODEL", "qwen2.5:7b")
+    LLM_MODEL: str = os.getenv("LLM_MODEL", "gemini-3.6-flash")
     EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
     EMBEDDING_DIM: int = int(os.getenv("EMBEDDING_DIM", "768"))
     VECTOR_SCHEMA: str = os.getenv("VECTOR_SCHEMA", "ai")

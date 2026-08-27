@@ -1,37 +1,36 @@
 import logging
 from typing import Sequence
-from langchain_openai import OpenAIEmbeddings
+from fastembed import TextEmbedding
 from src.config import settings
 
 logger = logging.getLogger("buildstack.ai.embeddings")
 
 class EmbeddingsClient:
     def __init__(self):
-        logger.info(
-            f"[Embeddings] Initializing provider: base_url={settings.AI_BASE_URL}, "
-            f"model={settings.EMBEDDING_MODEL}, dim={settings.EMBEDDING_DIM}"
-        )
-        self.client = OpenAIEmbeddings(
-            model=settings.EMBEDDING_MODEL,
-            openai_api_base=settings.AI_BASE_URL,
-            openai_api_key=settings.AI_API_KEY,
-            check_embedding_ctx_length=False,
-        )
+        model_name = "nomic-ai/nomic-embed-text-v1.5"
+        logger.info(f"[Embeddings] Initializing FastEmbed model '{model_name}' (dim={settings.EMBEDDING_DIM})...")
+        self.model = TextEmbedding(model_name=model_name)
 
     def embed_query(self, text: str) -> list[float]:
-        """Generates embedding vector for a single query text."""
+        """Generates 768-dim embedding vector for a single query text locally."""
         try:
-            return self.client.embed_query(text)
+            embeddings = list(self.model.embed([text]))
+            return embeddings[0].tolist()
         except Exception as e:
-            logger.error(f"[Embeddings] Failed to embed query: {e}")
+            logger.error(f"[Embeddings] Failed to embed query locally: {e}")
             raise
 
     def embed_documents(self, texts: Sequence[str]) -> list[list[float]]:
-        """Generates embedding vectors for a batch of text chunks."""
+        """Generates 768-dim embedding vectors for a list of document chunks locally."""
+        text_list = list(texts)
+        if not text_list:
+            return []
         try:
-            return self.client.embed_documents(list(texts))
+            logger.info(f"[Embeddings] Embedding {len(text_list)} documents with FastEmbed...")
+            embeddings = list(self.model.embed(text_list))
+            return [emb.tolist() for emb in embeddings]
         except Exception as e:
-            logger.error(f"[Embeddings] Failed to embed batch of {len(texts)} documents: {e}")
+            logger.error(f"[Embeddings] Failed to embed documents locally: {e}")
             raise
 
 embeddings_client = EmbeddingsClient()

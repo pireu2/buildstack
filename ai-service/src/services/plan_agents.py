@@ -25,13 +25,18 @@ class SolutionProductItem(BaseModel):
     unit_price: float = Field(description="Unit price in EUR")
     unit: str = Field(default="m²", description="Measurement unit")
 
+class SolutionPricing(BaseModel):
+    cost_per_m2: float = Field(default=0.0, description="Estimated material cost per square meter in EUR")
+    total_estimated_cost: float = Field(default=0.0, description="Total estimated cost for the specified dimensions in EUR")
+    currency: str = Field(default="EUR", description="Currency code (e.g. EUR)")
+
 class SolutionOption(BaseModel):
     id: Literal["budget", "balanced", "premium"] = Field(description="Option ID")
     tier: Literal["budget", "balanced", "premium"] = Field(description="Solution tier category")
     title: str = Field(description="Clean descriptive title for this assembly (no badges or marketing fluff)")
     tagline: str = Field(description="One-sentence high-level summary")
     description: str = Field(description="Plain-English explanation of why this assembly works")
-    pricing: Dict[str, Any] = Field(default_factory=dict, description="{ cost_per_m2: float, total_estimated_cost: float, currency: 'EUR' }")
+    pricing: SolutionPricing = Field(default_factory=SolutionPricing, description="Detailed cost and price calculation breakdown")
     products: List[SolutionProductItem] = Field(default_factory=list, description="List of real catalog products")
     key_benefits: List[str] = Field(default_factory=list, description="2 to 3 bullet points")
     installation_notes: List[str] = Field(default_factory=list, description="1 to 2 practical tips")
@@ -186,11 +191,11 @@ def reconcile_products_with_catalog(
     total_cost = round(cost_m2 * area_m2, 2)
 
     option.products = valid_products
-    option.pricing = {
-        "cost_per_m2": cost_m2,
-        "total_estimated_cost": total_cost,
-        "currency": "EUR"
-    }
+    option.pricing = SolutionPricing(
+        cost_per_m2=cost_m2,
+        total_estimated_cost=total_cost,
+        currency="EUR"
+    )
     return option
 
 # -----------------------------------------------------------------------------
@@ -279,7 +284,7 @@ Select products strictly from the candidate list and construct the 'budget' solu
         title="Value-Optimized Certified Assembly",
         tagline="Cost-effective, reliable material assembly for standard performance.",
         description="A straightforward, value-optimized system engineered for reliable everyday performance and easy installation.",
-        pricing={},
+        pricing=SolutionPricing(),
         products=[],
         key_benefits=["Lowest upfront material cost", "Fast and straightforward installation", "Reliable certified quality"],
         installation_notes=["Ensure clean substrate before fastening.", "Apply continuous sealing tape along perimeters."]
@@ -322,7 +327,7 @@ Select products strictly from the candidate list and construct the 'balanced' so
         title="Commercial Standard Durability Assembly",
         tagline="Optimal commercial balance of durability, acoustic insulation, and longevity.",
         description="The contractor-standard assembly providing robust durability, verified sound isolation, and high wear resistance.",
-        pricing={},
+        pricing=SolutionPricing(),
         products=[],
         key_benefits=["Commercial-grade durability", "High acoustic dampening", "Excellent long-term wear resistance"],
         installation_notes=["Stagger board joints by at least 400mm.", "Use recommended acoustic perimeter sealants."]
@@ -365,7 +370,7 @@ Select products strictly from the candidate list and construct the 'premium' sol
         title="High-Performance Structural & Decoupled Assembly",
         tagline="Maximum engineered acoustic isolation, heavy fire safety, and luxury longevity.",
         description="Top-tier multi-layer assembly engineered for critical soundproofing, heavy load-bearing capacity, and maximum structural life.",
-        pricing={},
+        pricing=SolutionPricing(),
         products=[],
         key_benefits=["Maximum sound isolation & silence", "Highest fire & impact resistance", "Decoupled structural framework"],
         installation_notes=["Use resilient sound channels for vibration decoupling.", "Seal all perimeter gaps with acoustic mastic."]

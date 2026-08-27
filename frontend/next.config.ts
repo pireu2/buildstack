@@ -27,11 +27,12 @@ if (fs.existsSync(rootEnvPath)) {
 }
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
   // Only public variables inlined into the browser bundle; server secrets stay in process.env
   env: {
     NEXT_PUBLIC_API_URL:
       process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1',
+    NEXT_PUBLIC_AI_URL:
+      process.env.NEXT_PUBLIC_AI_URL || 'http://localhost:8080/api/v1/ai',
   },
 };
 
